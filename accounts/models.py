@@ -4,8 +4,6 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.db.models import TextChoices
-from django.forms import ChoiceField
 from django.utils.translation import gettext_lazy as _
 
 from accounts import choices
