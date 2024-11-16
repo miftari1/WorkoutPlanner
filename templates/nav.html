@@ -1,0 +1,31 @@
+{% load static %}
+<div class='navbar'>
+    <div class="logo">
+        <img src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website.">
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="#">HOME</a>
+        </li>
+        <li>
+            <a href="#">TRAINING PLANS</a>
+        </li>
+        <li>
+            <a href="#">SINGLE SESSIONS</a>
+        </li>
+        <li>
+            <a href="#">CALCULATORS</a>
+        </li>
+        <li>
+            <a href="#">EXERCISES</a>
+        </li>
+    </ul>
+    
+    <div>
+        <form>
+            {{ form }}
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </form>
+    </div>
+
+</div>
