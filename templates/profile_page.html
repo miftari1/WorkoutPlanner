@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}My profile{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="profile-img-container">
+            <img src="#" alt="Profile image for this user.">
+        </div>
+        {% if user.profile %}
+        <div class="profile-details">
+            <h5>{{ user.profile.first_name }} {{ profile.last_name }}</h5>
+            <p>{{ user.profile.age }}</p>
+            <p>{{ user.profile.height }}</p>
+            <p>{{ user.profile.weight }}</p>
+            <p>{{ user.profile.get_goal_display }}</p>
+            <p>{{ user.profile.calories_needed }}</p>
+        </div>
+        {% else %}
+            <a href="{% url 'accounts:configure-profile' user.id %}">Configure you profile information!</a>
+        {% endif %}
+        <div>
+            <a href="{% url 'accounts:delete_account' user.id %}">Delete Profile</a>
+        </div>
+    </section>
+{% endblock %}

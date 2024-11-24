@@ -1,31 +1,50 @@
 {% load static %}
+
 <div class='navbar'>
-    <div class="logo">
-        <img src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website.">
+    <div class="logo-container">
+        <img class="logo" src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website.">
     </div>
     <ul class="nav-links">
-        <li>
-            <a href="#">HOME</a>
+        <li class="m-4">
+            <a href="{% url 'common:home' %}">HOME</a>
         </li>
-        <li>
+        <li class="m-4">
             <a href="#">TRAINING PLANS</a>
         </li>
-        <li>
+        <li class="m-4">
             <a href="#">SINGLE SESSIONS</a>
         </li>
-        <li>
+        <li class="m-4">
             <a href="#">CALCULATORS</a>
         </li>
-        <li>
+        <li class="m-4">
             <a href="#">EXERCISES</a>
         </li>
     </ul>
-    
-    <div>
-        <form>
-            {{ form }}
-            <i class="fa-solid fa-magnifying-glass"></i>
+    <fieldset class="form-container">
+        <form class="d-inline-block">
+            {{ search_form }}
         </form>
-    </div>
+        <button><i class="fa-solid fa-magnifying-glass d-inline-block"></i></button>
+    </fieldset>
+
+    {% if request.user.is_authenticated %}
+        <div class="dropdown-container">
+            <button class="dbt"><i class="fa-solid fa-user"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="{% url 'accounts:profile-details' user.id %}">My Profile</a>
+                    <form method="post" action="{% url 'accounts:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Log Out</button>
+                    </form>
+                </div>
+        </div>
+    {% else %}
+        <a href="{% url 'accounts:login' %}"><i class="fa-solid fa-user"></i></a>
+    {% endif %}
+    
+
 
 </div>
+

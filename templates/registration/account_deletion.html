@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete your account{% endblock %}
+
+{% block content %}
+    <h2>Confirm Account Deletion</h2>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+        <a href="{% url 'accounts:profile-details' user.id %}">Cancel</a>
+    </form>
+{% endblock %}
