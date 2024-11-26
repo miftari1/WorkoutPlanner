@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from workoutPlanner.accounts.models import CustomUser, Profile
+
+
+@admin.register(CustomUser, Profile)
+class CustomUserAdmin(admin.ModelAdmin):
+    pass
