@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load markdown_text %}
+
+{% block title %}{{ exercise.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ exercise.name }}</h1>
+    
+        {% if exercise.image %}
+            <img src="{{ exercise.image.url }}" alt="{{ exercise.name }}">
+        {% else %}
+            <p><em>No image available for this exercise.</em></p>
+        {% endif %}
+        
+
+        <h2>Overview</h2>
+        <p>{{ exercise.overview }}</p>
+    
+        <h2>Technique Description</h2>
+        <p>{{ exercise.technique|markdown }}</p>
+    </div>
+{% endblock %}
