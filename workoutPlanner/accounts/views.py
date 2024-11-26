@@ -4,9 +4,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 
 from django.views.generic import CreateView, DeleteView, DetailView
-from django.views.generic.edit import FormMixin
 
-from workoutPlanner.accounts.forms import AccountCreationForm, AccountDeleteForm, ProfileUpdateForm
+from workoutPlanner.accounts.forms import AccountCreationForm, ProfileUpdateForm
 from workoutPlanner.accounts.models import Profile
 
 UserModel = get_user_model()
