@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% if exercises %}
+        {% for exercise in exercises %}
+            <div class="exercise-container">
+                <div class="exercise-info">
+                    <p>{{ exercise.name }}</p>
+                    <p>Primary Muscles: {{ exercise.get_muscle_groups_display }}</p>
+                </div>
+                <img src="{{ exercise.image.url }}" alt="Image displaying a person doing {{ exercise.name }}">
+                <div class="button-container">
+                    <button class="details-btn">View Details</button>
+                    <button class="add-btn">Add</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>There is no exercises to display.</p>
+        <a href="{% url 'exercises:add_exercise' %}">Add exercise</a>
+    {% endif %}
+{% endblock %}

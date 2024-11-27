@@ -18,7 +18,14 @@ class ExerciseModel(models.Model):
         choices=MuscleGroupChoices
     )
     image = models.ImageField(upload_to='exercises_images/')
-    slug = models.SlugField(unique=True, max_length=255, blank=True)
+    slug = models.SlugField(
+        unique=True,
+        max_length=255,
+        blank=True
+    )
+    sets = models.PositiveSmallIntegerField(blank=True, null=True)
+    reps = models.PositiveSmallIntegerField(blank=True, null=True)
+    rest = models.PositiveSmallIntegerField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         # Automatically generate a slug from the title if not provided
