@@ -5,36 +5,36 @@
         <img class="logo" src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website.">
     </div>
     <div class="nav-bar">
-        <a href="#" class="dropbtn">HOME</a>
-        <div class="dropdown-content">
+        <a href="{% url 'common:home' %}" class="dropbtn">HOME</a>
+        <div class="nav-dropdown-content">
             <a href="#">Overview</a>
             <a href="#">Updates</a>
             <a href="#">Team</a>
         </div>
         
         <a href="#" class="dropbtn">TRAINING PLANS</a>
-        <div class="dropdown-content">
+        <div class="nav-dropdown-content">
             <a href="#">Our Story</a>
             <a href="#">Mission</a>
             <a href="#">Values</a>
         </div>
         
         <a href="#" class="dropbtn">SINGLE SESSIONS</a>
-        <div class="dropdown-content">
+        <div class="nav-dropdown-content">
             <a href="#">Web Development</a>
             <a href="#">SEO</a>
             <a href="#">Marketing</a>
         </div>
         
         <a href="#" class="dropbtn">CALCULATORS</a>
-        <div class="dropdown-content">
+        <div class="nav-dropdown-content">
             <a href="#">Web Design</a>
             <a href="#">Graphic Design</a>
             <a href="#">Case Studies</a>
         </div>
 
-        <a href="#" class="dropbtn">EXERCISES</a>
-        <div class="dropdown-content">
+        <a href="{% url 'exercises:exercise_list'%}" class="dropbtn">EXERCISES</a>
+        <div class="nav-dropdown-content">
             <a href="#">Email</a>
             <a href="#">Phone</a>
             <a href="#">Location</a>
@@ -50,8 +50,8 @@
 
     {% if request.user.is_authenticated %}
         <div class="dropdown-container">
-            <button class="dbt"><i class="fa-solid fa-user"></i></button>
-                <div class="dropdown-content">
+            <button class="user-btn"><i class="fa-solid fa-user"></i></button>
+                <div class="user-dropdown-content">
                     <a href="#">Link 1</a>
                     <a href="{% url 'accounts:profile-details' user.id %}">My Profile</a>
                     <form method="post" action="{% url 'accounts:logout' %}">
@@ -61,7 +61,9 @@
                 </div>
         </div>
     {% else %}
-        <a href="{% url 'accounts:login' %}"><i class="fa-solid fa-user"></i></a>
+        <div class="dropdown-container">
+            <a href="{% url 'accounts:login' %}"><i class="fa-solid fa-user"></i></a>
+        </div>
     {% endif %}
 </nav>
 
