@@ -1,3 +1,57 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.details-btn {
+    border-radius: 3px;
+    background-color: #ffffff;
+    font-weight: bold;
+    height: 35px;
+}
+
+.details-btn:hover {
+    cursor: pointer;
+}
+
+.add-btn {
+    border-radius: 3px;
+    background-color: #ff162a;
+    font-weight: bold;
+    height: 35px;
+}
+
+.add-btn:hover {
+    cursor: pointer;
+}
+
+.exercise-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.exercise-container img {
+    height: auto;
+    width: 10%;
+}
+
+.exercise-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
 .nav-container {
     display: flex;
     flex-direction: row;
@@ -8,40 +62,49 @@
 
 .nav-bar {
     height: 80px;
+    width: 60%;
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     list-style-type: none;
     align-items: center;
 }
 
 .logo {
-    height: 80px;
-    width: 80px;
-    border: 1px solid red;
+    height: 60px;
+    width: 60px;
 
 }
 .logo-container {
     justify-content: flex-start;
-    border: 1px solid red;
+    width: 10%;
 }
 
 .footer-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     background-color: azure;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .footer-element {
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
 }
 .form-container {
     display: flex;
+    width: 20%;
 }
 
 /* Dropdown Button */
-.dbt {
+.user-btn {
   background-color: #04AA6D;
   color: white;
   font-size: 16px;
@@ -51,13 +114,15 @@
 /* The container <div> - needed to position the dropdown content */
 .dropdown-container {
   position: relative;
-  display: inline-block;
+
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.user-dropdown-content {
+
   display: none;
   position: absolute;
+  right: 0;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -65,18 +130,26 @@
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.user-dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
+.nav-dropdown-content {
+    display: none;
+}
+
+.nav-dropdown-content:hover {
+    display: block;
+}
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd;}
 
 /* Show the dropdown menu on hover */
-.dropdown-container:hover .dropdown-content {display: block;}
+.dropdown-container:hover .user-dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown-container:hover .dbt {background-color: #3e8e41;}
+.dropdown-container:hover .user-btn {background-color: #3e8e41;}
