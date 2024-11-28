@@ -87,6 +87,8 @@ class Profile(models.Model):
     last_name = models.CharField(
         max_length=50,
     )
+    image = models.ImageField(upload_to='profile_images/',
+                              default='profile_images/default_profile_image.png',)
 
     gender = models.CharField(
         max_length=2,
