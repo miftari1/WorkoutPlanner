@@ -12,7 +12,7 @@
                 </div>
                 <img src="{{ exercise.image.url }}" alt="Image displaying a person doing {{ exercise.name }}">
                 <div class="button-container">
-                    <button class="details-btn">View Details</button>
+                    <a href='{% url 'exercises:exercise_details' slug=exercise.slug %}' class="details-btn" >View Details</a>
                     <button class="add-btn">Add</button>
                 </div>
             </div>
