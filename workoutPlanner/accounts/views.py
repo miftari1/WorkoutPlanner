@@ -54,10 +54,12 @@ class ProfileConfView(CreateView):
     model = Profile
     template_name = 'registration/profile_config.html'
     form_class = ProfileUpdateForm
-    success_url = reverse_lazy('accounts:profile-details')
 
 
     def form_valid(self, form):
         # Assign the currently logged-in user to the profile
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('accounts:profile-details', kwargs={'pk': self.object.pk})
