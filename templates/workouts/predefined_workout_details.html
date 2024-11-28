@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ workout.name }}{% endblock %}
+
+{% block content %}
+    <div class="workout-name">
+        <h3>{{ workout.name }}</h3>
+    </div>
+    <div class="exercise-list">
+        {% if exercises %}
+            {% for exercise in exercises %}
+                <div class="exercise-predefined-workout">
+                    <div class="pw-exercise-info">
+                        <p>Exercise {{ forloop.counter }}</p>
+                        <p>{{ exercise.name }}</p>
+                    </div>
+                    <img src="{{ exercise.image.url }}" 
+                         alt="Image displaying a person demonstrating {{ exercise.name }}">
+                    <div class="pw-exercise-volume">
+                        <p>Sets: {{ exercise.sets }}</p>
+                        <p>Reps: {{ exercise.reps }}</p>
+                        <p>Rest: {{ exercise.reps }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>There is no exercises yet.</p>
+        {% endif %}
+    </div>
+{% endblock %}

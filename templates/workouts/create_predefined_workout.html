@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Add a workout{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Create</button>
+            <button type="reset">Cancel</button>
+        </form>
+    
+    </div>
+{% endblock %}

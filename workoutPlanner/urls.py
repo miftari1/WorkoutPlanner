@@ -26,6 +26,7 @@ urlpatterns = [
         path('', include('workoutPlanner.common.urls')),
         path('accounts/', include('workoutPlanner.accounts.urls')),
         path('exercises/', include('workoutPlanner.exercises.urls')),
+        path('workouts/', include('workoutPlanner.workouts.urls')),
     ])),
 ]
 

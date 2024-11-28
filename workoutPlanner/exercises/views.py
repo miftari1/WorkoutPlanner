@@ -18,7 +18,8 @@ class ExerciseListView(ListView):
     template_name = 'exercises/exercises_list.html'
 
     def get_queryset(self):
-        return ExerciseModel.objects.all()
+        category = self.kwargs.get('category')
+        return ExerciseModel.objects.filter(muscle_groups__exact=category)
 
 class AddExerciseView(CreateView):
     form_class = AddExerciseForm
