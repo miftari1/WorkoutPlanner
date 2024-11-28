@@ -5,43 +5,48 @@
         <img class="logo" src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website.">
     </div>
     <div class="nav-bar">
-        <a href="{% url 'common:home' %}" class="dropbtn">HOME</a>
-        <div class="nav-dropdown-content">
-            <a href="#">Overview</a>
-            <a href="#">Updates</a>
-            <a href="#">Team</a>
-        </div>
+        <a href="{% url 'common:home' %}" class="drop-btn">HOME</a>
         
-        <a href="#" class="dropbtn">TRAINING PLANS</a>
-        <div class="nav-dropdown-content">
-            <a href="#">Our Story</a>
-            <a href="#">Mission</a>
-            <a href="#">Values</a>
-        </div>
+        <div class="nav-dropdown-container">
+            <a href="#" class="drop-btn">TRAINING PLANS</a>
+            <div class="nav-dropdown-content">
+                <a href="#">Our Story</a>
+                <a href="#">Mission</a>
+                <a href="#">Values</a>
+            </div>
+        </div>    
         
-        <a href="#" class="dropbtn">SINGLE SESSIONS</a>
-        <div class="nav-dropdown-content">
-            <a href="#">Web Development</a>
-            <a href="#">SEO</a>
-            <a href="#">Marketing</a>
-        </div>
+        <div class="nav-dropdown-container">
+            <a href="{% url 'workouts:predefined_workout_list' %}" class="drop-btn">WORKOUTS</a>
+            <div class="nav-dropdown-content">
+                <a href="{% url 'workouts:create_predefined_workout' %}">Add a workout</a>
+            </div>
+        </div>    
         
-        <a href="#" class="dropbtn">CALCULATORS</a>
-        <div class="nav-dropdown-content">
-            <a href="#">Web Design</a>
-            <a href="#">Graphic Design</a>
-            <a href="#">Case Studies</a>
-        </div>
+        <div class="nav-dropdown-container">
+            <a href="#" class="drop-btn">CALCULATORS</a>
+            <div class="nav-dropdown-content">
+                <a href="#">Body Mass Index</a>
+                <a href="#">Body Fat Index</a>
+            </div>
+        </div>    
 
-        <a href="{% url 'exercises:exercise_list'%}" class="dropbtn">EXERCISES</a>
-        <div class="nav-dropdown-content">
-            <a href="#">Email</a>
-            <a href="#">Phone</a>
-            <a href="#">Location</a>
-        </div>
+        <div class="nav-dropdown-container">
+            <a href="#" class="drop-btn">EXERCISES</a>
+            <div class="nav-dropdown-content">
+                <a href="{% url 'exercises:add_exercise' %}">Add exercise</a>
+                <a href="{% url 'exercises:exercise_list' category='CT' %}">Chest</a>
+                <a href="#">Shoulder</a>
+                <a href="#">Back</a>
+                <a href="#">Biceps</a>
+                <a href="#">Triceps</a>
+                <a href="#">Abs</a>
+                <a href="#">Legs</a>
+            </div>
+        </div>    
     </div>
     
-    <fieldset class="form-container">
+    <fieldset class="search-form-container">
         <form>
             {{ search_form }}
         </form>
@@ -49,14 +54,14 @@
     </fieldset>
 
     {% if request.user.is_authenticated %}
-        <div class="dropdown-container">
+        <div class="user-dropdown-container">
             <button class="user-btn"><i class="fa-solid fa-user"></i></button>
                 <div class="user-dropdown-content">
                     <a href="#">Link 1</a>
                     <a href="{% url 'accounts:profile-details' user.id %}">My Profile</a>
                     <form method="post" action="{% url 'accounts:logout' %}">
                         {% csrf_token %}
-                        <button type="submit">Log Out</button>
+                        <button type="submit" class="logout-btn">Log Out</button>
                     </form>
                 </div>
         </div>
