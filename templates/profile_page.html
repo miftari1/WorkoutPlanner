@@ -5,7 +5,7 @@
 {% block content %}
     <section>
         <div class="profile-img-container">
-            <img src="#" alt="Profile image for this user.">
+            <img src="{{ user.profile.image.url }}" alt="This is the profile picture of this user.">
         </div>
         {% if user.profile %}
         <div class="profile-details">
