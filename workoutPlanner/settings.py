@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'workoutPlanner.common.apps.CommonConfig',
     'workoutPlanner.workouts.apps.WorkoutsConfig',
     'workoutPlanner.exercises.apps.ExercisesConfig',
+    'workoutPlanner.forum.apps.ForumConfig',
 ]
 
 MIDDLEWARE = [
