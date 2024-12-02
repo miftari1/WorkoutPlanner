@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -6,6 +8,7 @@ from django.views.generic import CreateView, DetailView, ListView
 
 from workoutPlanner.exercises.forms import AddExerciseForm
 from workoutPlanner.exercises.models import ExerciseModel
+from workoutPlanner.workouts.models import CustomWorkoutModel
 
 
 class ExerciseDetailView(DetailView):
@@ -20,6 +23,7 @@ class ExerciseListView(ListView):
     def get_queryset(self):
         category = self.kwargs.get('category')
         return ExerciseModel.objects.filter(muscle_groups__exact=category)
+
 
 class AddExerciseView(CreateView):
     form_class = AddExerciseForm

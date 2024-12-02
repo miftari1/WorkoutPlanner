@@ -1,26 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <div>
-        <h3>Purpose of this website</h3>
-        <p>{% lorem %}</p>
-    </div>
-    <div>
-        <h5>Know-how</h5>
-        <p>{% lorem 10 w %}</p>
-    </div>
-    <div>
-        <h5>Know-how</h5>
-        <p>{% lorem 10 w %}</p>
-    </div>
-    <div>
-        <h5>Know-how</h5>
-        <p>{% lorem 10 w %}</p>
-    </div>
-    <div>
-        <h5>Know-how</h5>
-        <p>{% lorem 10 w %}</p>
-    </div>
+    <section class="home-first">
+        <img src="{% static 'media/images/home_bg.jpg' %}" alt="Happy people jogging.">
+        <div class="home-top-section-content">
+            <h2>{% lorem 7 w %}</h2>
+            <p>{% lorem 15 w %}</p>
+        </div>
+    </section>
+    <section class="home-second">
+        <div class="home-second-content">
+            <h3>{% lorem 5 w%}</h3>
+            <p>{% lorem 20 w %}</p>
+        </div>
+        <div>
+            
+        </div>
+    </section>
 {% endblock %}

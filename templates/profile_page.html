@@ -23,4 +23,19 @@
             <a href="{% url 'accounts:delete_account' user.id %}">Delete Profile</a>
         </div>
     </section>
+    <section>
+        <div>
+            {% if workouts %}
+                <h3>Custom Workouts</h3>
+                {% for workout in workouts %}
+                    <div>
+                        <a href="{% url 'workouts:custom_workout_detail' slug=workout.slug %}">This is {{ workout.name }}</a>
+                        
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>There is no workouts yet!</p>
+            {% endif %}
+        </div>
+    </section>
 {% endblock %}

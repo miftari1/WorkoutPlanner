@@ -23,15 +23,12 @@ class ExerciseModel(models.Model):
         max_length=255,
         blank=True
     )
-    sets = models.PositiveSmallIntegerField(blank=True, null=True)
-    reps = models.PositiveSmallIntegerField(blank=True, null=True)
-    rest = models.PositiveSmallIntegerField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        # Automatically generate a slug from the title if not provided
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
+

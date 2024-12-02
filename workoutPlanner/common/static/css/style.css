@@ -3,7 +3,23 @@ html, body {
     display: flex;
     flex-direction: column;
 }
+.home-first {
+    display: flex;
+    justify-content: space-between;
+}
+.home-first img {
+    height: auto;
+    width: 50%;
+}
 
+.home-top-section-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+}
 .container img {
     height: 300px;
     width: auto;
@@ -13,26 +29,52 @@ html, body {
     width: auto;
 }
 .details-btn {
+     display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 3px;
-    background-color: #ffffff;
+    border: 2px solid rgba(1,1,33,0.83);
+    background-color: white;
+    color: rgba(1,1,33,0.83);
     font-weight: bold;
     height: 35px;
+}
+
+.details-btn a {
+    text-decoration: none;
 }
 
 .details-btn:hover {
     cursor: pointer;
+    color: white;
+    background-color: rgba(1,1,33,0.83);
+    text-decoration: none
 }
 
+
 .add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 3px;
-    background-color: #ff162a;
+    border: 2px solid rgba(1,1,33,0.83);
+    background-color: white;
+    color: rgba(1,1,33,0.83);
     font-weight: bold;
     height: 35px;
 }
 
+.add-btn a {
+    text-decoration: none;
+}
+
 .add-btn:hover {
     cursor: pointer;
+    color: white;
+    background-color: rgba(1,1,33,0.83);
+    text-decoration: none
 }
+
 
 .exercise-info {
     display: flex;
@@ -64,8 +106,8 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: baseline;
-    background-color: azure;
+    align-items: center;
+    background-color: rgba(1,1,33,0.83);
 }
 
 .nav-bar {
@@ -78,9 +120,14 @@ html, body {
     align-items: center;
 }
 
+.nav-bar a {
+    color: white;
+}
+
 .logo {
     height: 60px;
     width: 60px;
+    border-radius: 5px;
 
 }
 .logo-container {
@@ -91,9 +138,10 @@ html, body {
 .footer-container {
     bottom: 0;
     left: 0;
+    height: 200px;
     width: 100%;
     display: flex;
-    background-color: azure;
+    background-color: rgba(1,1,33,0.83);
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
@@ -102,9 +150,19 @@ html, body {
 .footer-element {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    max-width: 200px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
 }
+
+.footer-element a {
+    color: black;
+    font-weight: bold;
+}
+
+
 .search-form-container {
     display: flex;
     width: 20%;
@@ -116,10 +174,30 @@ html, body {
 
 /* Dropdown Button */
 .user-btn {
-  background-color: #04AA6D;
-  color: white;
-  font-size: 16px;
-  border: none;
+    background-color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    color: black;
+    font-size: 16px;
+    border: none;
+}
+
+.user-btn-ua {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    color: black;
+    font-size: 16px;
+    border: none;
+}
+
+.user-btn-ua i {
+    color: black;
 }
 
 /* The container <div> - needed to position the dropdown content */

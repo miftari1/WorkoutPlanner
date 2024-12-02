@@ -13,7 +13,12 @@
                 <img src="{{ exercise.image.url }}" alt="Image displaying a person doing {{ exercise.name }}">
                 <div class="button-container">
                     <a href='{% url 'exercises:exercise_details' slug=exercise.slug %}' class="details-btn" >View Details</a>
-                    <button class="add-btn">Add</button>
+                    <a href="{% url 'workouts:create_custom_workout' slug=exercise.slug %}"
+                       class="add-btn" >Create new workout
+                    </a>
+                    <a href="#"
+                       class="add-btn" >Add to existing
+                    </a>
                 </div>
             </div>
         {% endfor %}

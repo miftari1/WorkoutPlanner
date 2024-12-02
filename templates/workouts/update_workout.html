@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Update your workout{% endblock %}
+
+{% block content %}
+    <h1>Update {{ workout.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ formset.management_form }}
+        
+        <table>
+            {% for form in formset %}
+                <tr>
+                    {{ form.as_p }}
+                </tr>
+            {% endfor %}
+        </table>
+        
+        <button type="submit">Save changes</button>
+    </form>
+{% endblock %}

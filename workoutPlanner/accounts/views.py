@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
@@ -7,14 +8,15 @@ from django.views.generic import CreateView, DeleteView, DetailView
 
 from workoutPlanner.accounts.forms import AccountCreationForm, ProfileUpdateForm
 from workoutPlanner.accounts.models import Profile
+from workoutPlanner.workouts.models import CustomWorkoutModel
 
 UserModel = get_user_model()
 
 class MyLoginView(LoginView):
     pass
 
-class MyLogoutView(LogoutView):
-    pass
+class MyLogoutView(LoginRequiredMixin, LogoutView):
+    login_url = reverse_lazy('accounts:login')
 
 
 class UserRegistrationView(CreateView):
@@ -27,8 +29,9 @@ class UserRegistrationView(CreateView):
         login(request=self.request, user=self.object)
         return response
 
-class UserDeleteView(DeleteView):
+class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = UserModel
+    login_url = reverse_lazy('accounts:login')
     template_name = 'registration/account_deletion.html'
     success_url = reverse_lazy('common:home')
 
@@ -44,14 +47,21 @@ class UserDeleteView(DeleteView):
         logout(request)
         return super().delete(request, *args, **kwargs)
 
-class ProfileDetailView(DetailView):
+class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = UserModel
+    login_url = reverse_lazy('accounts:login')
     template_name = 'profile_page.html'
     context_object_name = 'user'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['workouts'] = CustomWorkoutModel.objects.filter(profile_id=self.request.user.id)
+        return context
 
-class ProfileConfView(CreateView):
+
+class ProfileConfView(LoginRequiredMixin, CreateView):
     model = Profile
+    login_url = reverse_lazy('accounts:login')
     template_name = 'registration/profile_config.html'
     form_class = ProfileUpdateForm
 
