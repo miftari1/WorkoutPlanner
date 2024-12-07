@@ -1,14 +1,27 @@
+{% load static %}
+
 <footer class="footer-container">
-      <div class="footer-element">
+    <div class="footer-first-section">
+      <img class="logo" src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website."
+           height="100px;" width="100px;">
+      <div class="fs-first">
           <a href="#">WORKOUT APP</a>
           <p>{% lorem 10 w %}</p>
       </div>
-      <div class="footer-element">
+      <div class="fs-second">
           <a href="#">ABOUT US</a>
           <p>{% lorem 10 w %}</p>
       </div>
-      <div class="footer-element">
-          <a href="#">CONTACTS</a>
+      <div class="fs-second">
+          <a href="#">ABOUT US</a>
           <p>{% lorem 10 w %}</p>
       </div>
+      <div class="fs-second">
+         <a href="#">ABOUT US</a>
+         <p>{% lorem 10 w %}</p>
+      </div>
+    </div>    
+    <div class="footer-second-section">
+        <p>© 2024 Workout Planner</p>
+    </div>
 </footer>

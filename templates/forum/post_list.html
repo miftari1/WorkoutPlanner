@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}WorkoutPlanner's Forum{% endblock%}
+
+{% block content %}
+    <div class="post-list-container">
+        <h1>Welcome to our forum</h1>
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post-container">
+                    <h2>
+                        <a href="{% url 'forum:post_detail' pk=post.pk %}">
+                            {{ post.title }}
+                        </a>
+                    </h2>
+                    <p class="date">
+                        Published {{ post.publish }} by {{ post.author }}
+                    </p>
+                    {{ post.body|truncatewords:30|linebreaks }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>There are no posts yet!</p>
+        {% endif %}
+    </div>
+{#    {% include 'pagination.html' with page=page_obj %}#}
+{% endblock %}

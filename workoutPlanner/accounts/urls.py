@@ -11,6 +11,7 @@ urlpatterns = [
     path('<int:pk>/', include([
         path('delete_account/', views.UserDeleteView.as_view(), name='delete_account'),
         path('profile-details/', views.ProfileDetailView.as_view(), name='profile-details' ),
+        path('update_profile/', views.ProfileUpdateView.as_view(), name='update_profile'),
         path('configure-profile/', views.ProfileConfView.as_view(), name='configure-profile'),
         ])
     )

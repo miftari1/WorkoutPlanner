@@ -16,26 +16,14 @@
             <p>{{ user.profile.get_goal_display }}</p>
             <p>{{ user.profile.calories_needed }}</p>
         </div>
-        {% else %}
-            <a href="{% url 'accounts:configure-profile' user.id %}">Configure you profile information!</a>
-        {% endif %}
         <div>
             <a href="{% url 'accounts:delete_account' user.id %}">Delete Profile</a>
         </div>
-    </section>
-    <section>
         <div>
-            {% if workouts %}
-                <h3>Custom Workouts</h3>
-                {% for workout in workouts %}
-                    <div>
-                        <a href="{% url 'workouts:custom_workout_detail' slug=workout.slug %}">This is {{ workout.name }}</a>
-                        
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>There is no workouts yet!</p>
-            {% endif %}
-        </div>
+            <a href="{% url 'accounts:update_profile' user.id %}">Update your profile</a>
+        </div>    
+        {% else %}
+            <a href="{% url 'accounts:configure-profile' user.id %}">Configure you profile information!</a>
+        {% endif %}
     </section>
 {% endblock %}

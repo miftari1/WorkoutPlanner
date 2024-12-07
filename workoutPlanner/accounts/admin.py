@@ -6,7 +6,7 @@ from workoutPlanner.accounts.models import CustomUser, Profile
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ['username', 'email', 'is_superuser', 'is_staff', 'is_active']
-    list_filter = ['is_active', 'is_superuser', 'is_staff']
+    list_filter = ['is_active', 'is_superuser', 'is_staff', 'groups']
     search_fields = ('username', 'email')
     ordering = ('is_superuser', 'is_staff', 'is_active')
     fieldsets = [

@@ -16,6 +16,8 @@
                     <p>Rest: {{ custom_exercise.rest }}</p>
                 </div>
             {% endfor %}
+            <a href="{% url 'workouts:update_workout' slug=workout.slug %}">Add exercise</a>
+            <a href="{% url 'workouts:update_workout' slug=workout.slug %}">Remove exercise</a>
         </div>
     </div>
 {% endblock %}

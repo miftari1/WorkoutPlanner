@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Workouts{% endblock %}
+
+{% block content %}
+    <div>
+        {% if workouts %}
+            <h1>Custom Workouts</h1>
+            {% for workout in workouts %}
+                <div>
+                    <h4>{{ workout.name }}</h4>
+                    <a href="{% url 'workouts:custom_workout_detail' slug=workout.slug %}">View details</a>
+                    <a href="{% url 'workouts:custom_workout_delete' slug=workout.slug %}">Delete</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>There is no workouts yet!</p>
+        {% endif %}
+    </div>
+{% endblock %}

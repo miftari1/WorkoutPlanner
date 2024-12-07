@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 
-from django.views.generic import CreateView, DeleteView, DetailView
+from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 
 from workoutPlanner.accounts.forms import AccountCreationForm, ProfileUpdateForm
 from workoutPlanner.accounts.models import Profile
@@ -70,6 +70,33 @@ class ProfileConfView(LoginRequiredMixin, CreateView):
         # Assign the currently logged-in user to the profile
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('accounts:profile-details', kwargs={'pk': self.object.pk})
+
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = Profile
+    login_url = reverse_lazy('accounts:login')
+    template_name = 'registration/profile_update.html'
+    form_class = ProfileUpdateForm
+
+    def get_initial(self):
+        initial_data = {
+            'first_name': self.object.first_name,
+            'last_name': self.object.last_name,
+            'image': self.object.image.url,
+            'gender': self.object.gender,
+            'age': self.object.age,
+            'height': self.object.height,
+            'weight': self.object.weight,
+            'goal': self.object.goal,
+            'activity': self.object.activity,
+            'calories_needed': self.object.calories_needed,
+        }
+        return initial_data
+
+
 
     def get_success_url(self):
         return reverse_lazy('accounts:profile-details', kwargs={'pk': self.object.pk})

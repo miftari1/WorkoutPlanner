@@ -2,18 +2,13 @@
 
 <nav class="nav-container">
     <div class="logo-container">
-        <img class="logo" src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website.">
+        <a href="{% url 'common:home' %}"><img class="logo" src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website."></a>
     </div>
     <div class="nav-bar">
         <a href="{% url 'common:home' %}" class="drop-btn">HOME</a>
         
         <div class="nav-dropdown-container">
-            <a href="#" class="drop-btn">TRAINING PLANS</a>
-            <div class="nav-dropdown-content">
-                <a href="#">Our Story</a>
-                <a href="#">Mission</a>
-                <a href="#">Values</a>
-            </div>
+            <a href="{% url 'forum:post_list' %}" class="drop-btn">FORUM</a>
         </div>    
         
         <div class="nav-dropdown-container">
@@ -57,7 +52,7 @@
         <div class="user-dropdown-container">
             <button class="user-btn"><i class="fa-solid fa-user"></i></button>
                 <div class="user-dropdown-content">
-                    <a href="#">Link 1</a>
+                    <a href="{% url 'workouts:custom_workouts_list' %}">My Workouts</a>
                     <a href="{% url 'accounts:profile-details' user.id %}">My Profile</a>
                     <form method="post" action="{% url 'accounts:logout' %}">
                         {% csrf_token %}

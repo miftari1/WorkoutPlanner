@@ -13,3 +13,8 @@ class CustomWorkoutCreationForm(forms.ModelForm):
     class Meta:
         model = CustomWorkoutModel
         fields = ['name']
+        widgets={
+            'name': forms.TextInput(attrs={'placeholder': 'Workout name'}),
+        }
+        labels={'name':''
+        }

@@ -1,5 +1,4 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.middleware import get_user
+from django.core.serializers import serialize
 from django.db import models
 from django.utils.text import slugify
 
@@ -9,21 +8,16 @@ from workoutPlanner.workouts.choices import FitnessLevelChoices, TrainingTypeCho
 
 
 class CustomWorkoutModel(models.Model):
-    profile = models.OneToOneField(
+    profile = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
-        related_name="custom_workout",
-        primary_key=True,
+        related_name="custom_workouts",
     )
     name = models.CharField(max_length=100)
     slug = models.SlugField(
         unique=True,
         max_length=150,
         blank=True)
-    exercises = models.ManyToManyField(
-        ExerciseModel,
-    related_name='custom_workout_exercises',
-    )
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -35,6 +29,7 @@ class CustomWorkoutModel(models.Model):
 
 
 class CustomWorkoutExerciseModel(models.Model):
+
     workout = models.ForeignKey(
         CustomWorkoutModel,
         on_delete=models.CASCADE,
@@ -43,7 +38,7 @@ class CustomWorkoutExerciseModel(models.Model):
     exercise = models.ForeignKey(
         ExerciseModel,
         on_delete=models.CASCADE,
-        related_name='custom_exercise',
+        related_name='custom_exercises',
     )
     sets = models.PositiveSmallIntegerField()
     reps = models.PositiveSmallIntegerField()
