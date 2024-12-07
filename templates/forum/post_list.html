@@ -5,6 +5,9 @@
 {% block content %}
     <div class="post-list-container">
         <h1>Welcome to our forum</h1>
+        <div class="add-post-link">
+            <a href="{% url 'forum:add_post' %}">Add Post</a>
+        </div>
         {% if posts %}
             {% for post in posts %}
                 <div class="post-container">
@@ -19,9 +22,9 @@
                     {{ post.body|truncatewords:30|linebreaks }}
                 </div>
             {% endfor %}
+            {% include 'forum/pagination.html' %}
         {% else %}
             <p>There are no posts yet!</p>
         {% endif %}
     </div>
-{#    {% include 'pagination.html' with page=page_obj %}#}
 {% endblock %}
