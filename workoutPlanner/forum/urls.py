@@ -7,6 +7,7 @@ urlpatterns = [
     path('', include([
         path('', views.PostListView.as_view(), name='post_list'),
         path('<int:pk>/', views.PostDetailView.as_view(), name='post_detail'),
+        path('add_post/', views.PostCreateView.as_view(), name='add_post'),
     ])),
 
 ]
