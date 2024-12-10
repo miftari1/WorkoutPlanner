@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import request, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
@@ -15,7 +16,9 @@ class PredefinedWorkoutBaseView:
     context_object_name = 'workout'
 
 
-class PredefinedWorkoutDetailView(PredefinedWorkoutBaseView, DetailView):
+class PredefinedWorkoutDetailView(LoginRequiredMixin, PredefinedWorkoutBaseView, DetailView):
+    login_url = reverse_lazy('accounts:login')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         exercises = context['workout'].exercises.all()
@@ -23,19 +26,21 @@ class PredefinedWorkoutDetailView(PredefinedWorkoutBaseView, DetailView):
         return context
 
 
-class PredefinedWorkoutListView(PredefinedWorkoutBaseView, ListView):
+class PredefinedWorkoutListView(LoginRequiredMixin, PredefinedWorkoutBaseView, ListView):
+    login_url = reverse_lazy('accounts:login')
     template_name = 'workouts/workouts_list.html'
     context_object_name = 'workouts'
 
 
-class CreatePredefinedWorkoutView(CreateView):
-    # model = PredefinedWorkoutModel
+class CreatePredefinedWorkoutView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('accounts:login')
     form_class = PredefinedWorkoutCreationForm
     template_name = 'workouts/create_predefined_workout.html'
     success_url = reverse_lazy('workouts:predefined_workout_list')
 
 
-class CreateCustomWorkoutView(CreateView):
+class CreateCustomWorkoutView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('accounts:login')
     model = CustomWorkoutModel
     form_class = CustomWorkoutCreationForm
     template_name = 'workouts/create_custom_workout.html'
@@ -86,7 +91,8 @@ class CreateCustomWorkoutView(CreateView):
         return response
 
 
-class CustomWorkoutDetailView(DetailView):
+class CustomWorkoutDetailView(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('accounts:login')
     template_name = 'workouts/custom_workout_details.html'
     context_object_name = 'workout'
 
@@ -101,7 +107,8 @@ class CustomWorkoutDetailView(DetailView):
         return context
 
 
-class CustomWorkoutListView(ListView):
+class CustomWorkoutListView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('accounts:login')
     template_name = 'workouts/custom_workouts_list.html'
     context_object_name = 'workouts'
 
@@ -110,7 +117,8 @@ class CustomWorkoutListView(ListView):
 
 
 
-class CustomWorkoutUpdateView(UpdateView):
+class CustomWorkoutUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('accounts:login')
     model = CustomWorkoutModel
     template_name = 'workouts/update_workout.html'
     form_class = CustomWorkoutCreationForm
@@ -148,7 +156,8 @@ class CustomWorkoutUpdateView(UpdateView):
         return response
 
 
-class CustomWorkoutDeleteView(DeleteView):
+class CustomWorkoutDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('accounts:login')
     form_class = CustomWorkoutCreationForm
     success_url = reverse_lazy('workouts:custom_workouts_list')
     context_object_name = 'workout'
