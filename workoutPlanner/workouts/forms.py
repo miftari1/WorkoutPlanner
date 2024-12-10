@@ -7,7 +7,8 @@ from workoutPlanner.workouts.models import PredefinedWorkoutModel, CustomWorkout
 class PredefinedWorkoutCreationForm(forms.ModelForm):
     class Meta:
         model = PredefinedWorkoutModel
-        fields = '__all__'
+        exclude = ['slug']
+        widgets = {}
 
 class CustomWorkoutCreationForm(forms.ModelForm):
     class Meta:
