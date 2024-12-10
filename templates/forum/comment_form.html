@@ -1,0 +1,8 @@
+<div class="comment-form-container">
+    <h2>Add a new comment</h2>
+    <form action="{% url 'forum:add_comment' pk=post.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Share</button>
+    </form>
+</div>
