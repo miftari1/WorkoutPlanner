@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Add a comment{% endblock %}
+
+{% block content %}
+    {% if comment %}
+        <h2>Your comment has been added.</h2>
+        <p><a href="{% url 'forum:post_detail' pk=post.pk %}">Back to the post</a></p>
+    {% else %}
+        {% include 'forum/add_comment.html' %}
+    {% endif %}
+{% endblock %}
