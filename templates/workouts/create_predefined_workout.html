@@ -3,12 +3,13 @@
 {% block title %}Add a workout{% endblock %}
 
 {% block content %}
-    <div class="form-container">
+    <div class="predefined-workout-form-container">
+        <h1>Workout data</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button>Create</button>
-            <button type="reset">Cancel</button>
+            <button class="submit-btn">CREATE</button>
+            <button class="cancel-btn" type="reset"><a href="{% url 'workouts:predefined_workout_list' %}" class="cancel-btn">Cancel</a></button>
         </form>
     
     </div>

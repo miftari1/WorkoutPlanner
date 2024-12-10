@@ -3,12 +3,12 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-    <fieldset>
-        <h3>Add new exercise</h3>
+    <div class="add-exercise-form-container">
+        <h1>Add new exercise</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button>Add</button>
+            <button class="submit-btn">Add</button>
         </form>
-    </fieldset>
+    </div>
 {% endblock %}

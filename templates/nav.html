@@ -5,21 +5,27 @@
         <a href="{% url 'common:home' %}"><img class="logo" src="{% static 'media/images/logo.jpg' %}" alt="The logo of this website."></a>
     </div>
     <div class="nav-bar">
-        <a href="{% url 'common:home' %}" class="drop-btn">HOME</a>
+        <div class="drop-btn">
+            <a href="{% url 'common:home' %}" class="drop-btn">HOME</a>
+        </div>
         
-        <div class="nav-dropdown-container">
+        <div class="drop-btn">
             <a href="{% url 'forum:post_list' %}" class="drop-btn">FORUM</a>
         </div>    
         
         <div class="nav-dropdown-container">
-            <a href="{% url 'workouts:predefined_workout_list' %}" class="drop-btn">WORKOUTS</a>
+            <div class="drop-btn">
+                <a href="{% url 'workouts:predefined_workout_list' %}" class="drop-btn">WORKOUTS</a>
+            </div>
             <div class="nav-dropdown-content">
                 <a href="{% url 'workouts:create_predefined_workout' %}">Add a workout</a>
             </div>
         </div>    
         
         <div class="nav-dropdown-container">
-            <a href="#" class="drop-btn">CALCULATORS</a>
+            <div class="drop-btn">
+                <a href="#" class="drop-btn">CALCULATORS</a>
+            </div>    
             <div class="nav-dropdown-content">
                 <a href="#">Body Mass Index</a>
                 <a href="#">Body Fat Index</a>
@@ -27,7 +33,9 @@
         </div>    
 
         <div class="nav-dropdown-container">
-            <a href="#" class="drop-btn">EXERCISES</a>
+            <div class="drop-btn">
+                <a href="#" class="drop-btn">EXERCISES</a>
+            </div>    
             <div class="nav-dropdown-content">
                 <a href="{% url 'exercises:add_exercise' %}">Add exercise</a>
                 <a href="{% url 'exercises:exercise_list' category='CT' %}">Chest</a>
@@ -41,12 +49,7 @@
         </div>    
     </div>
     
-    <fieldset class="search-form-container">
-        <form>
-            {{ search_form }}
-        </form>
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-    </fieldset>
+
 
     {% if request.user.is_authenticated %}
         <div class="user-dropdown-container">

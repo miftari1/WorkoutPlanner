@@ -19,7 +19,9 @@
                     <p class="date">
                         Published {{ post.publish }} by {{ post.author }}
                     </p>
-                    {{ post.body|truncatewords:30|linebreaks }}
+                    <div class="content">
+                        {{ post.body|truncatewords:30|linebreaks }}
+                    </div >    
                 </div>
             {% endfor %}
             {% include 'forum/pagination.html' %}
