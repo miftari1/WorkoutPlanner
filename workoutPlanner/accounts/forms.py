@@ -1,22 +1,106 @@
+from cProfile import label
+
 from django import forms
-from django.contrib.auth import get_user_model, get_user
-from django.contrib.auth.forms import UserCreationForm
-from django.template.context_processors import request
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, BaseUserCreationForm
+from django.utils.translation import gettext_lazy as _
+
 
 from workoutPlanner.accounts.models import Profile
 
 UserModel = get_user_model()
 
-class AccountCreationForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model = UserModel
-        fields = ('username', 'email',)
+class LoginForm(AuthenticationForm):
+    username = UsernameField(
+        label='',
+        widget=forms.TextInput(attrs={
+            "autofocus": True,
+            'placeholder': 'Username',
+        }))
+    password = forms.CharField(
+        label='',
+        strip=False,
+        widget=forms.PasswordInput(attrs={
+            "autocomplete": "current-password",
+            'placeholder': 'Password',
+        }),
+    )
 
+    error_messages = {
+        "invalid_login": _(
+            "Please enter a correct %(username)s and password. Note that both "
+            "fields may be case-sensitive."
+        ),
+        "inactive": _("This account is inactive."),
+    }
+
+
+
+class AccountCreationForm(UserCreationForm):
+    class Meta:
+        model = UserModel
+        fields = ('username', 'email', 'password1', 'password2')
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'placeholder': 'Username',
+            }),
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'Email',
+            }),
+            'password1': forms.PasswordInput(attrs={
+                'placeholder': 'Password',
+            }),
+            'password2': forms.PasswordInput(attrs={
+                'placeholder': 'Confirm Password',
+            }),
+        }
+        labels = {
+            'username': '',
+            'email': '',
+            'password1': '',
+            'password2': '',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password1'].widget = forms.PasswordInput(attrs={
+            'placeholder': 'Password',
+        })
+        self.fields['password2'].widget = forms.PasswordInput(attrs={
+            'placeholder': 'Confirm Password',
+        })
+
+        for field_name, field in self.fields.items():
+            field.help_text = ''
+            field.label = ''
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user']
+        labels = {
+            'image': 'Profile picture',
+            'goal': 'Your goal',
+            'activity': 'Activity',
+            'calories_needed': 'Daily calorie need'
+        }
+        widgets = {
+            'image': forms.FileInput(attrs={
+                'class': 'profile-conf-image-input'
+            }),
+            'age': forms.NumberInput(attrs={
+                'class': "profile-conf-age-field",
+            }),
+            'goal': forms.Select(attrs={
+                'class': 'profile-conf-goal-input',
+            },),
+            'activity': forms.Select(attrs={
+                'class': 'profile-conf-activity-input'
+            }),
+            'calories_needed': forms.NumberInput(attrs={
+                'disabled': 'True'
+            })
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

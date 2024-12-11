@@ -3,12 +3,13 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-    <div>
-        <h3>Create an account</h3>
+    <div class="signup-form">
+        <h2>Create an account</h2>
         <form method="post">
             {% csrf_token %}
+            {{ error_messages }}
             {{ form.as_p }}
-            <button class="btn-primary btn-dark">Register</button>
+            <button>REGISTER</button>
         </form>
     </div>
 {% endblock %}

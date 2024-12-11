@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Configure your profile{% endblock %}
+{% block title %}Create your profile{% endblock %}
 
 {% block content %}
-    <fieldset>
+    <div class="profile-conf-form-container">
+        <h2>Create your profile</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button>Create</button>
         </form>    
-    </fieldset>
+    </div>
 {% endblock %}

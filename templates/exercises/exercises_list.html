@@ -7,8 +7,8 @@
         {% for exercise in exercises %}
             <div class="exercise-container">
                 <div class="exercise-info">
-                    <p>{{ exercise.name }}</p>
-                    <p>Primary Muscles: {{ exercise.get_muscle_groups_display }}</p>
+                    <h3>{{ exercise.name }}</h3>
+                    <p><span style="font-weight: bold">Primary Muscles:</span> {{ exercise.get_muscle_groups_display }}</p>
                 </div>
                 <img src="{{ exercise.image.url }}" alt="Image displaying a person doing {{ exercise.name }}">
                 <div class="button-container">

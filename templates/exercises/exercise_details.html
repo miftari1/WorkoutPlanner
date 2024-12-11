@@ -4,20 +4,26 @@
 {% block title %}{{ exercise.name }}{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>{{ exercise.name }}</h1>
-    
+    <div class="exercise-header-container">
+        <div class="exercise-title">
+            <h1>{{ exercise.name }}</h1>
+            <p>Muscle groups: {{ exercise.get_muscle_groups_display }}</p>
+        </div>
+    </div>
+    <div class="exercise-data">
+        <div class="exercise-overview">
+            <h2>Overview</h2>
+            <p>{{ exercise.overview }}</p>
+        </div>
         {% if exercise.image %}
             <img src="{{ exercise.image.url }}" alt="{{ exercise.name }}">
         {% else %}
             <p><em>No image available for this exercise.</em></p>
         {% endif %}
-        
-
-        <h2>Overview</h2>
-        <p>{{ exercise.overview }}</p>
-    
-        <h2>Technique Description</h2>
-        <p>{{ exercise.technique|markdown }}</p>
+        <div class="exercise-article">
+            <h2>Technique Description</h2>
+            <p>{{ exercise.technique|markdown }}</p>
+        </div>
     </div>
+
 {% endblock %}

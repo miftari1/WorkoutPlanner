@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model, login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.views import LoginView, LogoutView
@@ -6,14 +7,16 @@ from django.urls import reverse_lazy
 
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 
-from workoutPlanner.accounts.forms import AccountCreationForm, ProfileUpdateForm
+from workoutPlanner.accounts.forms import AccountCreationForm, ProfileUpdateForm, LoginForm
 from workoutPlanner.accounts.models import Profile
 from workoutPlanner.workouts.models import CustomWorkoutModel
 
 UserModel = get_user_model()
 
 class MyLoginView(LoginView):
-    pass
+    def get_context_data(self, **kwargs):
+        form = LoginForm()
+        return {'form': form}
 
 class MyLogoutView(LoginRequiredMixin, LogoutView):
     login_url = reverse_lazy('accounts:login')
@@ -25,9 +28,10 @@ class UserRegistrationView(CreateView):
     success_url = reverse_lazy('common:home')
 
     def form_valid(self, form):
-        response = super().form_valid(form)
-        login(request=self.request, user=self.object)
-        return response
+        if form.is_valid():
+            response = super().form_valid(form)
+            login(request=self.request, user=self.object)
+            return response
 
 class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = UserModel

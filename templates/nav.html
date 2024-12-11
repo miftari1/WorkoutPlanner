@@ -55,11 +55,11 @@
         <div class="user-dropdown-container">
             <button class="user-btn"><i class="fa-solid fa-user"></i></button>
                 <div class="user-dropdown-content">
-                    <a href="{% url 'workouts:custom_workouts_list' %}">My Workouts</a>
-                    <a href="{% url 'accounts:profile-details' user.id %}">My Profile</a>
+                    <a href="{% url 'workouts:custom_workouts_list' %}">My workouts</a>
+                    <a href="{% url 'accounts:profile-details' user.id %}">My profile</a>
                     <form method="post" action="{% url 'accounts:logout' %}">
                         {% csrf_token %}
-                        <button type="submit" class="logout-btn">Log Out</button>
+                        <button type="submit" class="logout-btn">LOG OUT</button>
                     </form>
                 </div>
         </div>

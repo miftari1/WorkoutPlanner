@@ -3,12 +3,12 @@
 {% block title %}Update your profile{% endblock %}
 
 {% block content %}
-    <h1>Update your profile information</h1>
-    <fieldset>
+    <div class="profile-update-form-container">
+        <h2>Update your profile information</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button>Update</button>
-        </form>    
-    </fieldset>
+        </form>
+    </div>
 {% endblock %}

@@ -4,26 +4,30 @@
 
 {% block content %}
     <section>
-        <div class="profile-img-container">
-            <img src="{{ user.profile.image.url }}" alt="This is the profile picture of this user.">
-        </div>
         {% if user.profile %}
-        <div class="profile-details">
-            <h5>{{ user.profile.first_name }} {{ profile.last_name }}</h5>
-            <p>{{ user.profile.age }}</p>
-            <p>{{ user.profile.height }}</p>
-            <p>{{ user.profile.weight }}</p>
-            <p>{{ user.profile.get_goal_display }}</p>
-            <p>{{ user.profile.calories_needed }}</p>
-        </div>
-        <div>
-            <a href="{% url 'accounts:delete_account' user.id %}">Delete Profile</a>
-        </div>
-        <div>
-            <a href="{% url 'accounts:update_profile' user.id %}">Update your profile</a>
-        </div>    
+            <div class="profile-img-container">
+                    <img src="{{ user.profile.image }}" alt="This is the profile picture of this user.">
+                    <h3>{{ user.profile.first_name }} {{ user.profile.last_name }}</h3>
+                    <div class="profile-menu">
+                        <i class="fa-solid fa-bars"></i>
+                        <div class="profile-menu-dropdown">
+                            <a href="{% url 'accounts:update_profile' user.id %}" class="update-profile-btn">Update your profile</a>
+                            <a href="{% url 'accounts:delete_account' user.id %}" class="delete-profile-btn">Delete Profile</a>
+                        </div>
+                    </div>
+            </div>
+            <div class="profile-details">
+                <p><span>Age:</span> {{ user.profile.age }}</p>
+                <p><span>Height:</span> {{ user.profile.height }}</p>
+                <p><span>Weight:</span> {{ user.profile.weight }}</p>
+                <p><span>Goal:</span> {{ user.profile.get_goal_display }}</p>
+                <p><span>Calories need:</span> {{ user.profile.calories_needed }}</p>
+            </div>
         {% else %}
-            <a href="{% url 'accounts:configure-profile' user.id %}">Configure you profile information!</a>
+            <div class="no-profile">
+                <p>You don't have a personal profile yet!</p>
+                <a href="{% url 'accounts:configure-profile' user.id %}" class="profile-conf-btn">Configure one now!</a>
+            </div>
         {% endif %}
     </section>
 {% endblock %}
