@@ -14,9 +14,16 @@ from workoutPlanner.workouts.models import CustomWorkoutModel
 UserModel = get_user_model()
 
 class MyLoginView(LoginView):
-    def get_context_data(self, **kwargs):
-        form = LoginForm()
-        return {'form': form}
+    form_class = LoginForm
+    # def get_context_data(self, **kwargs):
+    #     form = LoginForm(self.request.POST or None)
+    #     return {'form': form}
+
+    # def form_valid(self, form):
+    #     if form.is_valid():
+    #         print("Form is valid")
+    #     else:
+    #         print("Form errors:", form.errors)
 
 class MyLogoutView(LoginRequiredMixin, LogoutView):
     login_url = reverse_lazy('accounts:login')

@@ -642,9 +642,27 @@ p.date {
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6)
 }
 
-/*.login-form form p {*/
-/*    background-color: white;*/
-/*}*/
+.login-form h2 {
+    border-bottom: 1px solid black;
+    min-width: 250px;
+    text-align: center;
+}
+
+
+.login-form ul {
+    text-align: center;
+    min-width: 250px;
+    width: fit-content;
+    padding: 0;
+}
+.login-form li {
+    margin: auto;
+    align-content: center;
+    list-style-type: none;
+    color: red;
+    height: 30px;
+    min-width: 250px;
+}
 
 .login-form form input {
     border: white;
@@ -946,6 +964,12 @@ p.date {
     margin: 50px auto;
     border: 1px lightgray;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.profile-update-form-container form li {
+    text-align: center;
+    color: red;
+    list-style-type: none;
 }
 
 .profile-update-form-container form {
