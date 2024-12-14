@@ -1,9 +1,11 @@
 from django.core.serializers import serialize
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.text import slugify
 
 from workoutPlanner.accounts.models import Profile
 from workoutPlanner.exercises.models import ExerciseModel
+from workoutPlanner.validators import AlphaNumericValidator
 from workoutPlanner.workouts.choices import FitnessLevelChoices, TrainingTypeChoices
 
 
@@ -46,7 +48,12 @@ class CustomWorkoutExerciseModel(models.Model):
 
 
 class PredefinedWorkoutModel(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(
+        max_length=100,
+        validators=[
+            MinLengthValidator(2),
+            AlphaNumericValidator('Workout name must contain letters and numbers only!')
+        ])
     slug = models.SlugField(
         unique=True,
         max_length=150,

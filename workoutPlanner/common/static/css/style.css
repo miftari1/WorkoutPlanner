@@ -139,8 +139,9 @@ html, body {
     border: none;
 }
 
-.user-btn-ua i {
+.user-btn-ua a {
     color: whitesmoke;
+    text-decoration: none;
 }
 
 .user-btn-ua:hover {
