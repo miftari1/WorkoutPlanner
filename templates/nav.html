@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_filters%}
 
 <nav class="nav-container">
     <div class="logo-container">
@@ -17,9 +18,11 @@
             <div class="drop-btn">
                 <a href="{% url 'workouts:predefined_workout_list' %}" class="drop-btn">WORKOUTS</a>
             </div>
-            <div class="nav-dropdown-content">
-                <a href="{% url 'workouts:create_predefined_workout' %}">Add a workout</a>
-            </div>
+            {% if user|has_perm:'workouts.add_predefinedworkoutmodel' %}
+                <div class="nav-dropdown-content">
+                    <a href="{% url 'workouts:create_predefined_workout' %}">Add a workout</a>
+                </div>
+            {% endif %}
         </div>    
         
         <div class="nav-dropdown-container">
@@ -37,7 +40,9 @@
                 <a href="#" class="drop-btn">EXERCISES</a>
             </div>    
             <div class="nav-dropdown-content">
-                <a href="{% url 'exercises:add_exercise' %}">Add exercise</a>
+                {% if user|has_perm:'exercises.add_exercisemodel' %}
+                    <a href="{% url 'exercises:add_exercise' %}">Add exercise</a>
+                {% endif %}
                 <a href="{% url 'exercises:exercise_list' category='CT' %}">Chest</a>
                 <a href="#">Shoulder</a>
                 <a href="#">Back</a>

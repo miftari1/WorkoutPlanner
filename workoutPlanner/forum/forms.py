@@ -1,7 +1,19 @@
-from django import forms
-
 from workoutPlanner.forum.models import Post, Comment
 
+from django import forms
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Search...',
+                'class': 'search-bar',
+            }
+        ),
+        required=False,
+        label='',
+    )
 
 class CreatePostForm(forms.ModelForm):
     class Meta:

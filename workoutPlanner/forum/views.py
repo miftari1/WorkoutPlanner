@@ -1,20 +1,30 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic.edit import FormMixin
 
-from workoutPlanner.forum.forms import CreatePostForm, CommentForm
+from workoutPlanner.forum.forms import CreatePostForm, CommentForm, SearchForm
 from workoutPlanner.forum.models import Post, Comment
 
 
-class PostListView(LoginRequiredMixin, ListView):
+class PostListView(LoginRequiredMixin, ListView, FormMixin):
     login_url = reverse_lazy('accounts:login')
-    model = Post
+    form_class = SearchForm
     template_name = 'forum/post_list.html'
     context_object_name = 'posts'
     paginate_by = 10
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        form = self.form_class(self.request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            if query:
+                queryset = queryset.filter(body__icontains=query)
+
+        return queryset
 
 
 class PostDetailView(LoginRequiredMixin, DetailView):

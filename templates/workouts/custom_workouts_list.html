@@ -3,18 +3,18 @@
 {% block title %}Workouts{% endblock %}
 
 {% block content %}
-    <div>
+    <div class="custom-workout-list">
         {% if workouts %}
             <h1>Custom Workouts</h1>
             {% for workout in workouts %}
-                <div>
-                    <h4>{{ workout.name }}</h4>
+                <div class="custom-workout-container">
+                    <h2>{{ workout.name }}</h2>
                     <a href="{% url 'workouts:custom_workout_detail' slug=workout.slug %}">View details</a>
                     <a href="{% url 'workouts:custom_workout_delete' slug=workout.slug %}">Delete</a>
                 </div>
             {% endfor %}
         {% else %}
-            <p>There is no workouts yet!</p>
+                <p>There are no workouts yet!</p>
         {% endif %}
     </div>
 {% endblock %}

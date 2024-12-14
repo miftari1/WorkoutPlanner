@@ -2,14 +2,14 @@ from lib2to3.fixes.fix_input import context
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 
 from workoutPlanner.exercises.forms import AddExerciseForm
 from workoutPlanner.exercises.models import ExerciseModel
-from workoutPlanner.workouts.models import CustomWorkoutModel
+
 
 
 class ExerciseDetailView(LoginRequiredMixin, DetailView):

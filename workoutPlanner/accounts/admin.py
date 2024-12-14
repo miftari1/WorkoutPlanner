@@ -1,10 +1,11 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
 from workoutPlanner.accounts.models import CustomUser, Profile
 
 
 @admin.register(CustomUser)
-class CustomUserAdmin(admin.ModelAdmin):
+class CustomUserAdmin(UserAdmin):
     list_display = ['username', 'email', 'is_superuser', 'is_staff', 'is_active']
     list_filter = ['is_active', 'is_superuser', 'is_staff', 'groups']
     search_fields = ('username', 'email')
@@ -15,13 +16,13 @@ class CustomUserAdmin(admin.ModelAdmin):
             {'fields': ['username','email', 'password']},
         ),
         (
+            'Status',
+            {'fields': ['is_superuser', 'is_staff', 'is_active']}
+        ),
+        (
             'Groups and Permissions',
             {'fields': ['groups', 'user_permissions']}
         ),
-        (
-            'Status',
-            {'fields': ['is_superuser', 'is_staff', 'is_active']}
-        )
     ]
     show_facets = admin.ShowFacets.ALWAYS
 

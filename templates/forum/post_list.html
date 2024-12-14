@@ -5,8 +5,16 @@
 {% block content %}
     <div class="post-list-container">
         <h1>Welcome to our forum</h1>
-        <div class="add-post-link">
+        <div class="forum-header">
+            <div class="add-post-link">
             <a href="{% url 'forum:add_post' %}">Add Post</a>
+            </div>
+            <div class="search-form-container">
+                <form method="get">
+                    {{ form }}
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
         </div>
         {% if posts %}
             {% for post in posts %}
