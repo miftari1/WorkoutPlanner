@@ -1,3 +1,4 @@
+
 html, body {
     height: 100%;
     display: flex;
@@ -407,6 +408,33 @@ p.date {
     margin-top: 50px;
 }
 
+.post-container h2 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.post-btn-container {
+    width: fit-content;
+}
+
+.post-container h2 .delete-post-btn {
+    color: white;
+    background-color: rgba(216,161,0,0.82);
+    font-size: 14px;
+    padding: 5px 10px;
+    text-align: center;
+    align-content: center;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+    margin-left: 10px;
+}
+
+.post-container h2 .delete-post-btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.7);
+}
+
 .post-list-container h1 {
     font-weight:normal;
     border-bottom:1px solid #bbb;
@@ -440,7 +468,6 @@ p.date {
     width: 500px;
     padding: 0 0 30px 0;
     margin: 50px auto;
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);*/
     background-color: ghostwhite;
 }
 
@@ -491,6 +518,63 @@ p.date {
     background-color: dimgrey;
     color: darkgrey;
 }
+
+/********************************** DELETE POST FORM ****************************************/
+
+.delete-post-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 50px;
+    margin: 50px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+.delete-post-form-container h1 {
+    width: fit-content;
+    border-bottom: 1px solid black;
+}
+
+.delete-post-form-container form textarea {
+    resize: none;
+    border-color: lightgray;
+}
+
+.delete-post-form-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.delete-post-form-container form input {
+    border-color: transparent;
+    border-bottom: 1px solid black;
+    height: 30px;
+}
+
+.delete-post-form-container form .delete-post-btn {
+    cursor: pointer;
+    color: white;
+    background-color: #bb0200;
+    width: 60%;
+    font-size: 14px;
+    padding: 5px 10px;
+    text-align: center;
+    align-content: center;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+.delete-post-form-container form .delete-post-btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
 
 /************************************* POST DETAIL PAGE***************************************/
 
@@ -1286,12 +1370,226 @@ p.date {
 }
 
 /**************************************** CUSTOM WORKOUT LIST PAGE **********************************************/
-.custom-workout-list {
-    flex:1;
-    display: flex;
+.custom-workout-wrapper {
+    text-align: center;
+    padding: 50px 30px;
 }
 
+.custom-workout-wrapper h1 {
+    font-size: 46px;
+    font-weight: 500;
+    padding-top: 0;
+    margin-top: 0;
+}
 
+.custom-workout-list {
+    flex:1;
+    padding: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.custom-workout-container h2 {
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: fit-content;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.custom-workout-container {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 350px;
+    min-width: 400px;
+    width: fit-content;
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-workout-container:hover {
+    transform: scale(1.02);
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.6);
+}
+
+.custom-workout-container .workout-details-btn {
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    width: 60%;
+    background-color: #bb0200;
+    padding: 10px 0;
+    box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.7);
+}
+
+.custom-workout-container .workout-delete-btn {
+    text-decoration: none;
+    color: white;
+    width: 60%;
+    border-radius: 4px;
+    background-color: rgba(216,161,0,0.82);
+    padding: 10px 0;
+    box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.7);
+}
+
+.workout-details-btn:hover, .workout-delete-btn:hover {
+    opacity: 0.9;
+    box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+.custom-workout-list p {
+    font-size: 40px;
+}
+
+/********************************** CUSTOM WORKOUT DETAILS **************************************/
+.cw-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cw-container h1 {
+    text-align: center;
+    width: 100%;
+    color: black;
+    font-size: 40px;
+    font-weight: 500;
+    padding: 10px 0;
+    background-color: lightgray;
+}
+
+.cw-container .btn-container {
+
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    padding-bottom: 50px;
+}
+
+.cw-add-btn {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    border-radius: 4px;
+    width: 150px;
+    background-color: #bb0200;
+    padding: 10px 0;
+    box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.7);
+}
+
+.cw-remove-btn {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    border-radius: 4px;
+    width: 150px;
+    background-color: rgba(216,161,0,0.82);
+    padding: 10px 0;
+    box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.7);
+}
+
+.cw-add-btn:hover, .cw-remove-btn:hover {
+    opacity: 0.9;
+    box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+.workout-data {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 50px;
+    width: 100%;
+}
+
+.cw-exercise {
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    height: fit-content;
+    padding: 10px 0;
+    box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cw-exercise:hover {
+    transform: scale(1.02);
+    box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cw-exercise h4 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.cw-exercise p {
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+}
+
+.cw-exercise p span {
+    font-size: 16px;
+    font-weight: 500;
+    color: dimgrey;
+}
+
+/***************************************** CREATE CUSTOM WORKOUT PAGE ***********************************************/
+
+.custom-workout-form-container {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 50px auto;
+    padding: 20px 50px;
+    box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.4);
+}
+
+.custom-workout-form-container h1 {
+    font-size: 40px;
+    font-weight: 500;
+    width: fit-content;
+    border-bottom: 1px solid black;
+}
+
+.custom-workout-form-container form input {
+    height: 24px;
+    width: 100%;
+    border: transparent;
+    border-bottom: 1px solid black;
+}
+
+.custom-workout-form-container form select {
+    cursor: pointer;
+    background-color: dimgrey;
+    color: white;
+    width: 100%;
+    height: 30px;
+}
+
+.custom-workout-form-container form button {
+    cursor: pointer;
+    border-color: transparent;
+    border-radius: 4px;
+    background-color: #bb0200;
+    color: white;
+    width: 100%;
+    height: 30px;
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+.custom-workout-form-container form button:hover {
+    opacity: 0.9;
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.7);
+}
 /******************************************** FOOTER ***********************************************/
 .footer-container {
     left: 0;

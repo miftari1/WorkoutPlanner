@@ -8,7 +8,6 @@ CustomWorkoutExerciseFormSet = inlineformset_factory(
     model=CustomWorkoutExerciseModel,
     fields=['exercise', 'sets', 'reps', 'rest'],
     extra=1,
-    can_delete=True,
     widgets={
         'exercise': forms.Select(attrs={'readonly': True}),
         'sets': forms.NumberInput(attrs={'placeholder': 'Sets'}),

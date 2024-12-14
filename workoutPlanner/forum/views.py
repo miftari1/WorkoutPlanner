@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.text import slugify
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
 
 from workoutPlanner.forum.forms import CreatePostForm, CommentForm, SearchForm
@@ -55,6 +55,36 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
         return redirect('forum:post_list')
 
+
+class PostUpdateView(UpdateView):
+    model = Post
+    template_name = 'forum/post-update.html'
+    form_class = CreatePostForm
+
+    def get_success_url(self):
+        return reverse_lazy('forum:post_detail', kwargs={'pk': self.object.pk})
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['title'] = self.object.title
+        initial['body'] = self.object.body
+
+        return initial
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy('forum:post_list')
+    template_name = 'forum/delete-post.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        form = CreatePostForm(instance=self.object)
+        for field in form.fields.values():
+            field.widget.attrs['disabled'] = True
+        context['form'] = form
+
+        return context
 
 class AddCommentView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('accounts:login')

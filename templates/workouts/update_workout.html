@@ -3,7 +3,8 @@
 {% block title %}Update your workout{% endblock %}
 
 {% block content %}
-    <h1>Update {{ workout.name }}</h1>
+    <div class="custom-workout-form-container">
+    <h1>Update your workout</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -19,4 +20,5 @@
         
         <button type="submit">Save changes</button>
     </form>
+    </div>
 {% endblock %}

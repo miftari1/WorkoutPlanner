@@ -3,18 +3,20 @@
 {% block title %}Workouts{% endblock %}
 
 {% block content %}
-    <div class="custom-workout-list">
-        {% if workouts %}
-            <h1>Custom Workouts</h1>
-            {% for workout in workouts %}
-                <div class="custom-workout-container">
-                    <h2>{{ workout.name }}</h2>
-                    <a href="{% url 'workouts:custom_workout_detail' slug=workout.slug %}">View details</a>
-                    <a href="{% url 'workouts:custom_workout_delete' slug=workout.slug %}">Delete</a>
-                </div>
-            {% endfor %}
-        {% else %}
-                <p>There are no workouts yet!</p>
-        {% endif %}
+    <div class="custom-workout-wrapper">
+        <h1>Your workouts</h1>
+        <div class="custom-workout-list">
+            {% if workouts %}
+                {% for workout in workouts %}
+                    <div class="custom-workout-container">
+                        <h2>{{ workout.name }}</h2>
+                        <a href="{% url 'workouts:custom_workout_detail' slug=workout.slug %}" class="workout-details-btn">View details</a>
+                        <a href="{% url 'workouts:custom_workout_delete' slug=workout.slug %}" class="workout-delete-btn">Delete</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <p>There are no workouts yet!</p>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

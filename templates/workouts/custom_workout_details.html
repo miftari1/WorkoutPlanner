@@ -1,23 +1,24 @@
-{#{% extends 'base.html' %}#}
-{##}
-{#{% block title %}{{ workout.name }}{% endblock %}#}
-{% load static %}
+{% extends 'base.html' %}
+
+{% block title %}{{ workout.name }}{% endblock %}
 
 {% block content %}
     <div class="cw-container">
         <h1>{{ workout.name }}</h1>
-        <div>
+        <div class="btn-container">
+            <a href="{% url 'workouts:update_workout' slug=workout.slug %}" class="cw-add-btn">Add exercise</a>
+        </div>
+        <div class="workout-data">
             {% for custom_exercise in custom_exercises %}
-                <div>
-                    <img src="{{ custom_exercise.exercise.image.url }}" height="80px;" width="80px;">
+                <div class="cw-exercise">
+                    <img src="{{ custom_exercise.exercise.image.url }}" height="120px;" width="auto;">
                     <h4>{{ custom_exercise.exercise.name }}</h4>
-                    <p>Sets: {{ custom_exercise.sets }}</p>
-                    <p>Reps: {{ custom_exercise.reps }}</p>
-                    <p>Rest: {{ custom_exercise.rest }}</p>
+                    <p><span>Sets:</span> {{ custom_exercise.sets }}</p>
+                    <p><span>Reps: </span> {{ custom_exercise.reps }}</p>
+                    <p><span>Rest: </span> {{ custom_exercise.rest }}</p>
+                    <a href="{% url 'workouts:update_workout' slug=workout.slug %}" class="cw-remove-btn">Remove exercise</a>
                 </div>
             {% endfor %}
-            <a href="{% url 'workouts:update_workout' slug=workout.slug %}">Add exercise</a>
-            <a href="{% url 'workouts:update_workout' slug=workout.slug %}">Remove exercise</a>
         </div>
     </div>
 {% endblock %}

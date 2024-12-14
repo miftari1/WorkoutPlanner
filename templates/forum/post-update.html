@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit post{% endblock %}
+
+{% block content %}
+    <div class="delete-post-form-container">
+        <h1>Edit post</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="delete-post-btn">Edit</button>
+        </form>
+    </div>
+{% endblock %}

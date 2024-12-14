@@ -28,7 +28,6 @@ class CreatePostForm(forms.ModelForm):
             'body': forms.Textarea(attrs={'placeholder': 'Share your thoughts...'})
         }
 
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

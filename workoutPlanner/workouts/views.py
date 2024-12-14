@@ -83,7 +83,7 @@ class CreateCustomWorkoutView(LoginRequiredMixin, CreateView):
 
         if formset.is_valid():
             for form in formset:
-                if form.cleaned_data and not form.cleaned_data.get('DELETE', False):
+                if form.cleaned_data:
                     custom_exercise = form.save(commit=False)
                     custom_exercise.exercise = form.cleaned_data['exercise']
                     custom_exercise.save()
@@ -148,7 +148,7 @@ class CustomWorkoutUpdateView(LoginRequiredMixin, UpdateView):
         if formset.is_valid():
             for form in formset:
                 custom_exercise = form.save(commit=False)
-                if form.cleaned_data and not form.cleaned_data.get('DELETE', False):
+                if form.cleaned_data:
                     exercise = form.cleaned_data['exercise']
                     custom_exercise.exercise = exercise
                     custom_exercise.workout = self.object

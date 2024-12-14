@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
 
 {% block title %}WorkoutPlanner's Forum{% endblock%}
 
@@ -23,13 +24,19 @@
                         <a href="{% url 'forum:post_detail' pk=post.pk %}">
                             {{ post.title }}
                         </a>
+                        {% if user.id == post.author_id or user|has_perm:'forum.change_post' %}
+                            <div class="post-btn-container">
+                                <a href="{% url 'forum:post_update' pk=post.pk %}" class="delete-post-btn">Edit post</a>
+                                <a href="{% url 'forum:post_delete' pk=post.pk %}" class="delete-post-btn">Delete post</a>
+                            </div>
+                        {% endif %}
                     </h2>
                     <p class="date">
                         Published {{ post.publish }} by {{ post.author }}
                     </p>
                     <div class="content">
                         {{ post.body|truncatewords:30|linebreaks }}
-                    </div >    
+                    </div >
                 </div>
             {% endfor %}
             {% include 'forum/pagination.html' %}
