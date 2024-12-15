@@ -5,9 +5,9 @@
 
 {% block content %}
     <div class="workout-name">
-        <h1 style="text-align: center; font-size: 40px">{{ workout.name }}</h1>
+        <h1 style="text-align: center; font-size: 40px;border-bottom: 1px solid black">{{ workout.name }}</h1>
     </div>
-    <p class="workout-info">{{ workout.overview|markdown }}</p>
+    <div class="workout-info" style="text-align: center;margin: 50px auto; font-size: 20px">{{ workout.overview|markdown }}</div>
 
     <div class="exercise-list">
         {% if exercises %}
@@ -22,12 +22,22 @@
                 </div>
             {% endfor %}
             <div class="workout-info">
-                <p>Workout content</p>{{ workout.content|markdown }}</div>
-            <div class="workout-info">{{ workout.workout_manual|markdown }}</div>
-            <div class="workout-info">{{ workout.effects|markdown }}</div>
+                <p><span style="font-size: 30px; font-weight: 500; margin-bottom: 30px">Workout content</span></p>
+                {{ workout.content|markdown }}
+            </div>
+            <div class="workout-info">
+                <p><span style="font-size: 30px; font-weight: 500; margin-bottom: 30px">Workout manual</span></p>
+                {{ workout.workout_manual|markdown }}
+            </div>
+            <div class="workout-info">
+                <p><span style="font-size: 30px; font-weight: 500; margin-bottom: 30px">Workout effects</span></p>
+                {{ workout.effects|markdown }}
+            </div>
             {% if workout.extra_info %}
-                <div class="workout-info">{{ workout.extra_info }}</div>
-            {% endif %}    
+                <div class="workout-info">
+                    <p><span style="font-size: 30px; font-weight: 500; margin-bottom: 30px">Workout extra information</span></p>
+                    {{ workout.extra_info }}</div>
+            {% endif %}
         {% else %}
             <p>There are no exercises yet.</p>
         {% endif %}

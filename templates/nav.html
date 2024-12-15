@@ -44,7 +44,7 @@
                     <a href="{% url 'exercises:add_exercise' %}">Add exercise</a>
                 {% endif %}
                 <a href="{% url 'exercises:exercise_list' category='CT' %}">Chest</a>
-                <a href="#">Shoulder</a>
+                <a href="{% url 'exercises:exercise_list' category='SH' %}">Shoulder</a>
                 <a href="#">Back</a>
                 <a href="#">Biceps</a>
                 <a href="#">Triceps</a>
