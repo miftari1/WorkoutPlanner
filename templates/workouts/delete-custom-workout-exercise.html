@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Remove exercise{% endblock %}
+
+{% block content %}
+    <div class="delete-post-form-container">
+        <h1>Are you sure removing this exercise ?</h1>
+        <h2 style="text-align: center; padding-bottom: 30px;">{{ custom_exercise.exercise.name }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="delete-post-btn">Remove</button>
+        </form>
+    </div>
+{% endblock %}

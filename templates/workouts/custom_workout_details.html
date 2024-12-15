@@ -16,7 +16,7 @@
                     <p><span>Sets:</span> {{ custom_exercise.sets }}</p>
                     <p><span>Reps: </span> {{ custom_exercise.reps }}</p>
                     <p><span>Rest: </span> {{ custom_exercise.rest }}</p>
-                    <a href="{% url 'workouts:update_workout' slug=workout.slug %}" class="cw-remove-btn">Remove exercise</a>
+                    <a href="{% url 'workouts:remove_exercise' pk=custom_exercise.pk %}" class="cw-remove-btn">Remove exercise</a>
                 </div>
             {% endfor %}
         </div>

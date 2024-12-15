@@ -7,8 +7,10 @@
     <section class="home-first">
         <div class="home-top-section-content">
             <h2>Get fit & <span style="color: rgba(53,216,93,0.95); padding-left: 152px;">healthy</span></h2>
-            <p>{% lorem 15 w %}</p>
-            <a class="home-first-btn">Get Started</a>
+            <p>Empower Your Journey, Transform Your Life.</p>
+            {% if not user.is_authenticated %}
+                <a class="home-first-btn" href="{% url 'accounts:register' %}">Get Started</a>
+            {% endif %}
         </div>
     </section>
     <section class="home-second">

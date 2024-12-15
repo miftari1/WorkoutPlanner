@@ -244,7 +244,7 @@ html, body {
 .home-top-section-content {
     padding: 50px;
     justify-items: center;
-    width: 600px;
+    width: fit-content;
 }
 
 .home-top-section-content h2 {
@@ -252,12 +252,15 @@ html, body {
     font-size: 80px;
     line-height: 80px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .home-top-section-content p {
     color: white;
-    font-size:25px;
-    margin-bottom: 30px;
+    font-size: 40px;
+    padding-bottom: 30px;
+    width: fit-content;
+    text-align: center;
 }
 
 .home-first-btn {
@@ -654,15 +657,20 @@ p.date {
 
 /********************************* ADD PREDEFINED WORKOUT FORM *****************************************/
 
+.predefined-workout-form-container {
+    width: 100%;
+    padding: 20px;
+}
 .predefined-workout-form-container h1 {
-    margin-left: 30px;
+    font-size: 40px;
     width: fit-content;
     border-bottom: 1px solid black;
+    margin-left: 50px;
 }
 
 .predefined-workout-form-container form {
-    width: 60%;
-    margin: 50px 30px;
+    width: 80%;
+    margin: 30px 50px;
 }
 
 .predefined-workout-form-container form p {
@@ -678,7 +686,7 @@ p.date {
     border-bottom: 1px solid black;
 }
 
-.predefined-workout-form-container form .submit-btn {
+.predefined-workout-form-container .submit-btn {
     cursor: pointer;
     width: 145px;
     height: 40px;
@@ -689,7 +697,7 @@ p.date {
     margin-right: 20px;
 }
 
-.predefined-workout-form-container form .cancel-btn {
+.predefined-workout-form-container .cancel-btn {
     cursor: pointer;
     text-decoration: none;
     width: 145px;
@@ -1590,6 +1598,118 @@ p.date {
     opacity: 0.9;
     box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.7);
 }
+
+/******************************************PREDEFINED WORKOUTS LIST PAGE ****************************/
+
+.workouts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.workout-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.7);
+    padding: 40px 40px;
+    transition: transform 0.3s ease;
+}
+
+.workout-container:hover {
+    transform: scale(1.02);
+}
+
+/******************************************PREDEFINED WORKOUTS DETAIL PAGE ****************************/
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.exercise-list p {
+    font-size: 20px;
+}
+
+.workout-info {
+    width: 70%;
+    text-align: center;
+    margin: 30px 0;
+}
+.cw-container .btn-container {
+
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    padding-bottom: 50px;
+}
+
+.cw-add-btn {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    border-radius: 4px;
+    width: 150px;
+    background-color: #bb0200;
+    padding: 10px 0;
+    box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.7);
+}
+
+.cw-remove-btn {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    border-radius: 4px;
+    width: 150px;
+    background-color: rgba(216,161,0,0.82);
+    padding: 10px 0;
+    box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.7);
+}
+
+.cw-add-btn:hover, .cw-remove-btn:hover {
+    opacity: 0.9;
+    box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+.exercise-predefined-workout {
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    height: fit-content;
+    padding: 10px 0;
+    box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cw-exercise:hover {
+    transform: scale(1.02);
+    box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cw-exercise h4 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.cw-exercise p {
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+}
+
+.cw-exercise p span {
+    font-size: 16px;
+    font-weight: 500;
+    color: dimgrey;
+}
+
 /******************************************** FOOTER ***********************************************/
 .footer-container {
     left: 0;

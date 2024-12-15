@@ -3,11 +3,19 @@
 {% block title %}Workouts{% endblock %}
 
 {% block content %}
-    {% if workouts %}
-        {% for workout in workouts %}
-            <p>This is {{ workout.name }}</p>
-        {% endfor %}
-    {% else %}
-        <p style="text-align: center; padding: 20px 0; font-size: 40px;">There are no workouts yet!</p>
-    {% endif %}
+    <div class="workouts-wrapper">
+        {% if workouts %}
+            {% for workout in workouts %}
+                <div class="workout-container">
+                    <img src="{{ workout.image.url }}" alt="" style="width: 100px; height: auto;">
+                    <p style="font-size: 24px;font-weight: 500">This is {{ workout.name }}</p>
+                    <p><span style="font-size: 20px">Level:</span> <span style="color: #bb0200;font-size: 20px;">{{ workout.get_level_display }}</span></p>
+                    <a href="{% url 'workouts:predefined_workout_detail' slug=workout.slug %}" class="details-btn" style="width: 80px;height: 30px; text-align: center">Details</a>
+                </div>
+
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center; padding: 20px 0; font-size: 40px;">There are no workouts yet!</p>
+        {% endif %}
+    </div>
 {% endblock %}

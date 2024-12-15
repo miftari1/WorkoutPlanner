@@ -18,6 +18,7 @@ class PredefinedWorkoutBaseView:
 
 class PredefinedWorkoutDetailView(LoginRequiredMixin, PredefinedWorkoutBaseView, DetailView):
     login_url = reverse_lazy('accounts:login')
+    template_name = 'workouts/predefined_workout_details.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -115,7 +116,18 @@ class CustomWorkoutListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return CustomWorkoutModel.objects.filter(profile_id=self.request.user.id)
 
+class DeleteCustomWorkoutExerciseView(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('accounts:login')
+    model = CustomWorkoutExerciseModel
+    template_name = 'workouts/delete-custom-workout-exercise.html'
 
+    def get_success_url(self):
+        return reverse_lazy('workouts:custom_workout_detail', kwargs={'slug': self.object.workout.slug})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['custom_exercise'] = CustomWorkoutExerciseModel.objects.get(pk=self.object.pk)
+        return context
 
 class CustomWorkoutUpdateView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('accounts:login')

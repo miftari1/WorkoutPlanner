@@ -52,8 +52,11 @@ class PredefinedWorkoutModel(models.Model):
         max_length=100,
         validators=[
             MinLengthValidator(2),
-            AlphaNumericValidator('Workout name must contain letters and numbers only!')
         ])
+    image = models.ImageField(
+        default='workouts_images/default_workout.jpg',
+        upload_to='workouts_images/',
+    )
     slug = models.SlugField(
         unique=True,
         max_length=150,

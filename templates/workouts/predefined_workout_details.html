@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
+{% load markdown_text %}
 
 {% block title %}{{ workout.name }}{% endblock %}
 
 {% block content %}
     <div class="workout-name">
-        <h3>{{ workout.name }}</h3>
+        <h1 style="text-align: center; font-size: 40px">{{ workout.name }}</h1>
     </div>
+    <p class="workout-info">{{ workout.overview|markdown }}</p>
+
     <div class="exercise-list">
         {% if exercises %}
             {% for exercise in exercises %}
                 <div class="exercise-predefined-workout">
                     <div class="pw-exercise-info">
                         <p>Exercise {{ forloop.counter }}</p>
-                        <p>{{ exercise.name }}</p>
+                        <p style="font-weight: 500">{{ exercise.name }}</p>
                     </div>
-                    <img src="{{ exercise.image.url }}" 
+                    <img style="height: 100px;width: auto;" src="{{ exercise.image.url }}"
                          alt="Image displaying a person demonstrating {{ exercise.name }}">
-                    <div class="pw-exercise-volume">
-                        <p>Sets: {{ exercise.sets }}</p>
-                        <p>Reps: {{ exercise.reps }}</p>
-                        <p>Rest: {{ exercise.reps }}</p>
-                    </div>
                 </div>
             {% endfor %}
+            <div class="workout-info">
+                <p>Workout content</p>{{ workout.content|markdown }}</div>
+            <div class="workout-info">{{ workout.workout_manual|markdown }}</div>
+            <div class="workout-info">{{ workout.effects|markdown }}</div>
+            {% if workout.extra_info %}
+                <div class="workout-info">{{ workout.extra_info }}</div>
+            {% endif %}    
         {% else %}
             <p>There are no exercises yet.</p>
         {% endif %}

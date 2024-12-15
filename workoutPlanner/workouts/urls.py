@@ -14,6 +14,7 @@ urlpatterns = [
     ),
     path('custom/', include([
         path('', views.CustomWorkoutListView.as_view(), name='custom_workouts_list'),
+        path('remove_exercise/<int:pk>/', views.DeleteCustomWorkoutExerciseView.as_view(), name='remove_exercise'),
         path('<slug:slug>/', include([
             path('', views.CustomWorkoutDetailView.as_view(), name='custom_workout_detail'),
             path('delete/', views.CustomWorkoutDeleteView.as_view(), name='custom_workout_delete'),
