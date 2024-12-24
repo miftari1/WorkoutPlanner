@@ -1,0 +1,460 @@
+
+/********************************* LOGIN PAGE *************************************/
+
+.login-form {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    margin: 50px auto;
+    border: 1px lightgray;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6)
+}
+
+.login-form h2 {
+    border-bottom: 1px solid black;
+    min-width: 250px;
+    text-align: center;
+}
+
+
+.login-form ul {
+    text-align: center;
+    min-width: 250px;
+    width: fit-content;
+    padding: 0;
+}
+.login-form li {
+    margin: auto;
+    align-content: center;
+    list-style-type: none;
+    color: red;
+    height: 30px;
+    min-width: 250px;
+}
+
+.login-form form input {
+    border: white;
+    border-bottom: 1px solid black;
+    background-color: white;
+    height: 30px;
+    min-width: 250px;
+}
+
+.login-form form button {
+    cursor: pointer;
+    min-width: 250px;
+    height: 30px;
+    background-color: #bb0200;
+    color: white;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6)
+}
+
+.login-form form button:hover {
+    opacity: 0.9;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+.login-form .login-p {
+    color: dimgrey;
+}
+
+.login-form .sign-up-btn {
+    text-decoration: none;
+    cursor: pointer;
+    min-width: 250px;
+    height: 30px;
+    text-align: center;
+    align-content: center;
+    background-color: gray;
+    color: white;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+.login-form .sign-up-btn:hover {
+    opacity: 0.9;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.7);
+}
+
+/******************************* SIGN UP PAGE ************************************/
+
+.signup-form {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    margin: 50px auto;
+    border: 1px lightgray;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.signup-form form input {
+    border: white;
+    border-bottom: 1px solid black;
+    background-color: white;
+    height: 30px;
+    min-width: 250px;
+}
+
+.signup-form form button {
+    cursor: pointer;
+    min-width: 250px;
+    height: 30px;
+    background-color: #bb0200;
+    color: white;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6)
+}
+
+.signup-form form button:hover {
+    opacity: 0.9;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+/********************************* PROFILE PAGE *************************************/
+
+.profile-img-container {
+    background-color: ghostwhite;
+    margin: 30px 30px;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px 4px rgba(0, 0, 0, 0.3)
+}
+
+.profile-img-container img {
+    display: inline-block;
+    height: 150px;
+    width: auto;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.profile-img-container h3 {
+    display: inline-block;
+    font-size: 30px;
+    margin-left: 30px;
+    width: fit-content;
+}
+
+.profile-details {
+    display: inline-block;
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+    margin: 30px;
+    background-color: ghostwhite;
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px 4px rgba(0, 0, 0, 0.3)
+}
+
+.profile-details p {
+    height: fit-content;
+    color: black;
+    width: 200px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 1px solid dimgrey;
+}
+
+.profile-details p span {
+    color: dimgrey;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.profile-menu {
+    display: inline-block;
+    margin: 0 0 0 30px;
+    background-color: #bb0200;
+    padding: 5px 7px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
+}
+
+.profile-menu i {
+    font-size: 30px;
+}
+
+.profile-menu-dropdown {
+    display: none;
+    width: fit-content;
+}
+
+.profile-menu-dropdown a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    color: dimgrey;
+}
+
+.profile-menu-dropdown .delete-profile-btn:hover {
+        background-color: #bb0200;
+}
+
+.profile-menu:hover .profile-menu-dropdown {
+    display: block;
+    margin-top: 6px;
+    background-color: ghostwhite;
+    border: 1px solid lightgray;
+    position: absolute;
+    z-index: 1;
+}
+
+.profile-menu:hover {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+.profile-menu-dropdown a:hover {
+    border-bottom: 1px solid black;
+    color: black;
+}
+.no-profile {
+    background-color: ghostwhite;
+    margin: 30px 30px;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px 4px rgba(0, 0, 0, 0.3)
+}
+
+.no-profile p  {
+    margin: 0 0 15px 0;
+    color: black;
+    font-size: 18px;
+}
+
+.no-profile a {
+    display: block;
+    width: fit-content;
+    padding: 15px 25px;
+    border-radius: 4px;
+    background-color: #bb0200;
+    color: whitesmoke;
+    text-decoration: none;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+.no-profile a:hover {
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.7);
+}
+
+/********************************* PROFILE CONFIGURATION FORM ****************************************/
+
+.profile-conf-form-container {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    margin: 50px auto;
+    border: 1px lightgray;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.profile-conf-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-conf-form-container h2 {
+    border-bottom: 1px solid black;
+}
+
+.profile-conf-form-container label {
+    color: dimgrey;
+}
+
+.profile-conf-form-container p {
+    width: fit-content;
+    margin: 10px 0 10px auto;
+}
+
+.profile-conf-form-container p select {
+    background-color: lightgray;
+    color: white;
+    border-color: transparent;
+    width: 300px;
+    margin-left: 35px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.profile-conf-form-container input {
+    width: 300px;
+    margin-left: 35px;
+    height: 30px;
+    border: 1px solid dimgrey;
+    border-radius: 4px;
+
+}
+
+.profile-conf-form-container input[type='file'] {
+    border-color: transparent;
+}
+
+.profile-conf-form-container button {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    margin: 30px auto 20px auto;
+    background-color: #bb0200;
+    color: white;
+    font-size: 20px;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.7)
+}
+
+.profile-conf-form-container button:hover {
+    opacity: 0.9;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+/********************************* UPDATE PROFILE FORM **************************************/
+
+.profile-update-form-container {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    margin: 50px auto;
+    border: 1px lightgray;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.profile-update-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-update-form-container h2 {
+    border-bottom: 1px solid black;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.profile-update-form-container label {
+    color: dimgrey;
+    font-size: 17px;
+}
+
+.profile-update-form-container p {
+    width: fit-content;
+    margin: 10px 0 10px auto;
+}
+
+.profile-update-form-container p select {
+    background-color: lightgray;
+    color: white;
+    border-color: transparent;
+    width: 300px;
+    margin-left: 35px;
+    height: 30px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.profile-update-form-container input {
+    width: 300px;
+    margin-left: 35px;
+    font-size: 17px;
+    height: 30px;
+    border: 1px solid dimgrey;
+    border-radius: 4px;
+
+}
+
+.profile-update-form-container input[type='file'] {
+    border-color: transparent;
+}
+
+.profile-update-form-container button {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    margin: 30px auto 20px auto;
+    background-color: #bb0200;
+    color: white;
+    font-size: 20px;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.7)
+}
+
+.profile-update-form-container button:hover {
+    opacity: 0.9;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+/************************************ ACCOUNT DELETION PAGE**********************************************/
+
+.account-deletion-form-container {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    margin: 50px auto;
+    border: 1px lightgray;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.account-deletion-form-container h2 {
+    border-bottom: 1px solid black;
+}
+
+.account-deletion-form-container p {
+    color: black;
+    font-size: 20px;
+}
+
+.account-deletion-form-container button {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    margin: 30px auto 20px auto;
+    background-color: #bb0200;
+    color: white;
+    font-size: 20px;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.7)
+}
+
+.account-deletion-form-container button:hover {
+    opacity: 0.9;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+.account-deletion-form-container a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.account-deletion-form-container .cancel-delete-btn {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    margin: 30px auto 20px auto;
+    background-color: dimgrey;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.7)
+}
