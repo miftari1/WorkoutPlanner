@@ -1,0 +1,47 @@
+/******************************************** FOOTER ***********************************************/
+.footer-container {
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer-first-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer-first-section div {
+    max-width: 200px;
+}
+
+.footer-second-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.82);
+    width:100%;
+}
+
+.footer-second-section p {
+    color: white;
+}
+
+.footer-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 200px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+.footer-container a, p {
+    color: black;
+}
