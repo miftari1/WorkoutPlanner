@@ -1,0 +1,56 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.errorlist li {
+    text-align: center;
+    color: red;
+    list-style-type: none;
+}
+
+.search-form-container {
+    width: fit-content;
+    padding: 0;
+}
+.search-form-container form {
+    display: flex;
+    height: fit-content;
+}
+
+.search-form-container input {
+    border:  dimgrey;
+    border-radius: 3px;
+    height: 40px;
+    width: 250px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+.search-form-container button{
+    cursor: pointer;
+    border: none;
+    margin-left: 2px;
+    margin-right: 0;
+    width: 45px;
+    border-radius: 3px;
+    background-color: dimgrey;
+    color: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.9);
+}
+
+.search-form-container button:hover {
+    opacity: 0.9;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.8);
+}
+.main {
+    margin: 0;
+}
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
