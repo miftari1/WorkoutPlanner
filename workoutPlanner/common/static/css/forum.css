@@ -7,26 +7,47 @@
     align-content: center;
 }
 
-.add-post-link {
-    padding: 10px 15px;
-    background-color: #bb0200;
-    width: 100px;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
-    text-align: center;
-    cursor: pointer;
+.post-list-container #add-post-form {
+  display: none;
+  margin: 1em auto;
+  border: 1px solid #ccc;
+  padding: 1em;
+  background: #f9f9f9;
+  border-radius: 8px;
+  max-width: 500px;
 }
 
-.add-post-link:hover {
-    opacity: 0.9;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+#add-post-form input,
+#add-post-form textarea {
+  display: block;
+  margin-bottom: 0.5em;
+  width: 100%;
+  padding: 0.5em;
 }
 
-.add-post-link a {
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
+#show-add-post-btn {
     color: white;
+    background-color: #bb0200;
+    font-size: 14px;
+    padding: 1em 2em;
+    display: block;
+    text-align: center;
+    align-content: center;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+    border: none;
+    margin: 2em auto;
+}
+#add-post-form button {
+    color: white;
+    background-color: #bb0200;
+    font-size: 14px;
+    padding: 5px 10px;
+    text-align: center;
+    align-content: center;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+    margin-left: 10px;
 }
 
 .post-container {

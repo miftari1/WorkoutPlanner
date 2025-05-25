@@ -44,7 +44,15 @@ INSTALLED_APPS = [
     'workoutPlanner.workouts.apps.WorkoutsConfig',
     'workoutPlanner.exercises.apps.ExercisesConfig',
     'workoutPlanner.forum.apps.ForumConfig',
+    'rest_framework'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        # optionally add BrowsableAPIRenderer
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

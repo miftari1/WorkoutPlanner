@@ -7,9 +7,6 @@
     <div class="post-list-container">
         <h1>Welcome to our forum</h1>
         <div class="forum-header">
-            <div class="add-post-link">
-            <a href="{% url 'forum:add_post' %}">Add Post</a>
-            </div>
             <div class="search-form-container">
                 <form method="get">
                     {{ form }}
@@ -17,26 +14,36 @@
                 </form>
             </div>
         </div>
+        <button id="show-add-post-btn">Add Post</button>
+
+        <div id="add-post-form">
+            <input type="text" id="post-title" placeholder="Post title">
+            <textarea id="post-body" placeholder="Post body" rows="4"></textarea>
+            <button id="submit-post">Post</button>
+            <button id="hide-form-btn">Hide</button>
+        </div>
         {% if posts %}
             {% for post in posts %}
-                <div class="post-container">
-                    <h2>
-                        <a href="{% url 'forum:post_detail' pk=post.pk %}">
-                            {{ post.title }}
-                        </a>
-                        {% if user.id == post.author_id or user|has_perm:'forum.change_post' %}
-                            <div class="post-btn-container">
-                                <a href="{% url 'forum:post_update' pk=post.pk %}" class="delete-post-btn">Edit post</a>
-                                <a href="{% url 'forum:post_delete' pk=post.pk %}" class="delete-post-btn">Delete post</a>
-                            </div>
-                        {% endif %}
-                    </h2>
-                    <p class="date">
-                        Published {{ post.publish }} by {{ post.author }}
-                    </p>
-                    <div class="content">
-                        {{ post.body|truncatewords:30|linebreaks }}
-                    </div >
+                <div id="post-list">
+                    <div class="post-container">
+                        <h2>
+                            <a href="{% url 'forum:post_detail' pk=post.pk %}">
+                                {{ post.title }}
+                            </a>
+                            {% if user.id == post.author_id or user|has_perm:'forum.change_post' %}
+                                <div class="post-btn-container">
+                                    <a href="{% url 'forum:post_update' pk=post.pk %}" class="delete-post-btn">Edit post</a>
+                                    <a href="{% url 'forum:post_delete' pk=post.pk %}" class="delete-post-btn">Delete post</a>
+                                </div>
+                            {% endif %}
+                        </h2>
+                        <p class="date">
+                            Published {{ post.publish }} by {{ post.author }}
+                        </p>
+                        <div class="content">
+                            {{ post.body|truncatewords:30|linebreaks }}
+                        </div >
+                    </div>
                 </div>
             {% endfor %}
             {% include 'forum/pagination.html' %}

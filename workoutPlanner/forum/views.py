@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
+from rest_framework import viewsets
 
 from workoutPlanner.forum.forms import CreatePostForm, CommentForm, SearchForm
 from workoutPlanner.forum.models import Post, Comment
@@ -39,22 +40,39 @@ class PostDetailView(LoginRequiredMixin, DetailView):
         context['form'] = CommentForm()
         return context
 
-class PostCreateView(LoginRequiredMixin, CreateView):
-    login_url = reverse_lazy('accounts:login')
-    model = Post
-    context_object_name = 'post'
-    form_class = CreatePostForm
-    template_name = 'forum/add_post.html'
+# class PostCreateView(LoginRequiredMixin, CreateView):
+#     login_url = reverse_lazy('accounts:login')
+#     model = Post
+#     context_object_name = 'post'
+#     form_class = CreatePostForm
+#     template_name = 'forum/add_post.html'
+#
+#     def form_valid(self, form):
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = self.request.user
+#             post.slug = slugify(post.title)
+#             post.save()
+#
+#         return redirect('forum:post_list')
 
-    def form_valid(self, form):
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = self.request.user
-            post.slug = slugify(post.title)
-            post.save()
+from rest_framework import generics, permissions
+from .models import Post
+from .serializers import PostSerializer
+from django.utils.text import slugify
+from django.utils import timezone
 
-        return redirect('forum:post_list')
+class PostListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Post.published.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+    def perform_create(self, serializer):
+        serializer.save(
+            author=self.request.user,
+            slug=slugify(self.request.data.get('title')),
+            publish=timezone.now()
+        )
 
 class PostUpdateView(UpdateView):
     model = Post
@@ -101,3 +119,10 @@ class AddCommentView(LoginRequiredMixin, CreateView):
             comment.save()
 
             return redirect('forum:post_detail', pk=self.kwargs['pk'])
+
+# class CommentViewSet(viewsets.ModelViewSet):
+#     queryset = Comment.objects.all()
+#     serializer_class = CommentSerializer
+#
+#     def get(self):
+#         pass

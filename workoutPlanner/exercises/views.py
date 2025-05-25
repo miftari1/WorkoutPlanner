@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, DeleteView
 
 from workoutPlanner.exercises.forms import AddExerciseForm
 from workoutPlanner.exercises.models import ExerciseModel
@@ -37,4 +37,6 @@ class AddExerciseView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         exercise = form.save()
         return redirect('exercises:exercise_details', kwargs={'slug': exercise.slug})
+
+    
 

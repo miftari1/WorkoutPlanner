@@ -1,6 +1,7 @@
 from django.urls import path, include
 
 from workoutPlanner.forum import views
+from workoutPlanner.forum.views import PostListCreateAPIView
 
 app_name = 'forum'
 urlpatterns = [
@@ -12,7 +13,6 @@ urlpatterns = [
             path('delete/', views.PostDeleteView.as_view(), name='post_delete'),
             path('comment/', views.AddCommentView.as_view(), name='add_comment'),
         ])),
-        path('add_post/', views.PostCreateView.as_view(), name='add_post'),
     ])),
 
 ]

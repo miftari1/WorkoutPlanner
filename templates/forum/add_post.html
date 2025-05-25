@@ -3,14 +3,14 @@
 {% block title %}New Post{% endblock %}
 
 {% block content %}
-    <div class="add-post-body">
-        <div class="add-post-form-container">
-            <h1>Add post</h1>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button>Share</button>
-            </form>
-        </div>
+    <button id="show-add-post-btn">Add Post</button>
+
+    <div id="add-post-form">
+        <form>
+            <input type="text" id="post-title" placeholder="Post title">
+            <textarea id="post-body" placeholder="Post body" rows="4"></textarea>
+            <button id="submit-post">Post</button>
+            <button id="hide-form-btn">Hide</button>
+        </form>
     </div>
 {% endblock %}

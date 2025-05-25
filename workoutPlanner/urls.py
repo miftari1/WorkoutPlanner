@@ -20,8 +20,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('workoutPlanner.forum.api_urls')),
     path('', include([
         path('', include('workoutPlanner.common.urls')),
         path('accounts/', include('workoutPlanner.accounts.urls')),

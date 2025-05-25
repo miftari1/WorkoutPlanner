@@ -46,6 +46,7 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
 
     def delete(self, request, *args, **kwargs):
         user = self.get_object()
+        # user.profile.image.delete()
         logout(request)
         return super().delete(request, *args, **kwargs)
 
