@@ -31,9 +31,12 @@
                                 {{ post.title }}
                             </a>
                             {% if user.id == post.author_id or user|has_perm:'forum.change_post' %}
-                                <div class="post-btn-container">
-                                    <a href="{% url 'forum:post_update' pk=post.pk %}" class="delete-post-btn">Edit post</a>
-                                    <a href="{% url 'forum:post_delete' pk=post.pk %}" class="delete-post-btn">Delete post</a>
+                                <div class="post-options-container">
+                                    <i id='post-options-icon' class="fa-solid fa-caret-down"></i>
+                                    <div class="options-content">
+                                        <button class="edit-post">Edit</button>
+                                        <button class="delete-post">Delete</button>
+                                    </div>
                                 </div>
                             {% endif %}
                         </h2>
