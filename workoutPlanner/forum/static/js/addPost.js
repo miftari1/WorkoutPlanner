@@ -44,9 +44,21 @@ document.getElementById('submit-post').addEventListener('click', () => {
     const newPost = document.createElement('div');
     newPost.className = 'post-container';
     newPost.innerHTML = `
-      <h3>${data.title}</h3>
-      <p>${data.body}</p>
-      <small>By ${data.username || 'You'} | just now</small>
+      <h2>
+        <a href="{% url 'forum:post_detail' pk=post.pk %}">
+            ${data.title}
+        </a>
+        <div class="post-btn-container">
+          <a href="{% url 'forum:post_update' pk=post.pk %}" class="delete-post-btn">Edit post</a>
+          <a href="{% url 'forum:post_delete' pk=post.pk %}" class="delete-post-btn">Delete post</a>
+        </div>
+      </h2>
+      <p class="date">
+        Published just now by You.
+      </p>
+      <div class="content">
+        ${data.body}
+      </div >
     `;
     postList.prepend(newPost);
 
