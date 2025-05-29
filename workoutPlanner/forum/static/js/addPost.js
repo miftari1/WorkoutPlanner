@@ -34,15 +34,12 @@ document.getElementById('submit-post').addEventListener('click', () => {
     body: JSON.stringify({ title, body })
   })
   .then(async res => {
-    const text = await res.text(); // read raw text
-    console.log('Raw response:', text); // inspect it
     if (!res.ok) {
-      throw new Error(`Server returned ${res.status}: ${text}`);
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
-    return JSON.parse(text);
+    return res.json();
   })
   .then(data => {
-    console.log('Parsed data:', data);
     // Add the new post to the page
     const newPost = document.createElement('div');
     newPost.className = 'post-container';
