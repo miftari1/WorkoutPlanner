@@ -1,1 +1,1 @@
-# WorkoutPlanner
+Fitness website project using Django, REST APIs and the modern front-end technologies. The website includes authentication, login features, profile page, forum page and the possibility of creating personalized workouts as well as informative pages where the users can gain knowledge on different topics.
