@@ -1,10 +1,15 @@
+from webbrowser import Error
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from workoutPlanner.forum.forms import CreatePostForm, CommentForm, SearchForm
 from workoutPlanner.forum.models import Post, Comment
@@ -63,7 +68,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 
 class PostListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Post.published.all()
+    queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -73,6 +78,36 @@ class PostListCreateAPIView(generics.ListCreateAPIView):
             slug=slugify(self.request.data.get('title')),
             publish=timezone.now()
         )
+
+class PostDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return Post.objects.get(pk=pk)
+        except Post.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        post = self.get_object(pk=pk)
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        post = self.get_object(pk=pk)
+        serializer = PostSerializer(post, data=request.data)
+        if serializer.is_valid():
+            serializer.save(
+                author=self.request.user,
+                slug=slugify(self.request.data.get('title')),
+                publish=timezone.now()
+            )
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        post = self.get_object(pk=pk)
+        post.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class PostUpdateView(UpdateView):
     model = Post

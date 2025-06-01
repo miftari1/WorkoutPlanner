@@ -1,3 +1,4 @@
+
 function getCSRFToken() {
       const cookies = document.cookie.split(';');
       for (let cookie of cookies) {
@@ -49,8 +50,8 @@ document.getElementById('submit-post').addEventListener('click', () => {
             ${data.title}
         </a>
         <div class="post-btn-container">
-          <a href="{% url 'forum:post_update' pk=post.pk %}" class="delete-post-btn">Edit post</a>
-          <a href="{% url 'forum:post_delete' pk=post.pk %}" class="delete-post-btn">Delete post</a>
+          <a href="#" class="delete-post-btn">Edit post</a>
+          <a href="#" class="delete-post-btn">Delete post</a>
         </div>
       </h2>
       <p class="date">
@@ -60,6 +61,7 @@ document.getElementById('submit-post').addEventListener('click', () => {
         ${data.body}
       </div >
     `;
+
     postList.prepend(newPost);
 
     // Clear and hide the form
